@@ -1,4 +1,6 @@
 import React from 'react';
+import logo from "../../assets/logo.svg";
+
 import { 
   Facebook, 
   Instagram, 
@@ -76,9 +78,9 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <img
-                src="https://via.placeholder.com/150x50/ab3f20/FFFFFF?text=CREWNEXT"
+                src={logo}
                 alt="CREWNEXT logo"
-                className="h-12 object-contain mb-4"
+                className="h-16 object-contain mb-4"
               />
               <p className="text-lg text-white/90 max-w-md">
                 Nền tảng kết nối <span className="text-[#f0b33a]">Brand – Agency – Nhân sự</span> sự kiện hàng đầu Việt Nam.

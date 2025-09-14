@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoMenuSharp, IoClose } from "react-icons/io5";
+import navLogo from "../../assets/logo.svg"; // ✅ đường dẫn chuẩn
 
 const navLinks = [
   { name: "Trang chủ", path: "/" },
@@ -18,9 +19,9 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="https://via.placeholder.com/120x40/FFFFFF/333333?text=CREWNEXT"
+            src={navLogo}
             alt="CREWNEXT logo"
-            className="h-8 object-contain"
+            className="h-13 w-auto object-contain"
           />
         </Link>
 

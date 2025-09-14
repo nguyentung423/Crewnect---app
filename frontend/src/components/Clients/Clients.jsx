@@ -143,7 +143,7 @@ export default function Clients() {
             Được tin tưởng bởi <span className="text-[#ab3f20]">hàng trăm đối tác</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            CREWNEXT đã đồng hành cùng các thương hiệu lớn và agency hàng đầu tại Việt Nam
+            Crewnect đã đồng hành cùng các thương hiệu lớn và agency hàng đầu tại Việt Nam
           </p>
         </div>
 
@@ -203,7 +203,7 @@ export default function Clients() {
               Sẵn sàng trở thành đối tác tiếp theo?
             </h3>
             <p className="text-gray-600 mb-4">
-              Hãy để CREWNEXT đồng hành cùng bạn tạo nên sự kiện thành công
+              Hãy để Crewnect đồng hành cùng bạn tạo nên sự kiện thành công
             </p>
             <button className="bg-[#ab3f20] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#536b4e] transition-colors duration-200">
               Liên hệ ngay
