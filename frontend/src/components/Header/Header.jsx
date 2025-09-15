@@ -3,11 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import { IoMenuSharp, IoClose } from "react-icons/io5";
 import navLogo from "../../assets/logo.svg"; // ✅ đường dẫn chuẩn
 
+// ✅ Đã xoá "Đăng ký nhân sự" và "Liên hệ", thêm "About Us"
 const navLinks = [
   { name: "Trang chủ", path: "/" },
   { name: "Tìm việc", path: "/jobs" },
-  { name: "Đăng ký nhân sự", path: "/signup" },
-  { name: "Liên hệ", path: "/contact" },
+  { name: "Về chúng tôi", path: "/about" },
 ];
 
 export default function Header() {
