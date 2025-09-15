@@ -15,9 +15,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto flex items-center justify-between px-4 py-4">
+      <div className="flex items-center justify-between px-2 sm:px-4 py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 pl-2 sm:pl-0">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src={navLogo}
             alt="CREWNEXT logo"

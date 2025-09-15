@@ -88,7 +88,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 lg:py-32">
+      <div className="container mx-auto px-4 pt-12 pb-20 lg:pt-16 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           {/* LEFT: Enhanced Copy & CTAs */}
           <div className="relative z-10 space-y-8">

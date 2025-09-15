@@ -76,7 +76,8 @@ export default function Footer() {
         <div className="mb-12 grid gap-8 lg:grid-cols-2 items-center">
           {/* Brand section */}
           <div>
-            <div className="mb-6">
+            <div className="mb-6 text-left">
+              <div className="flex flex-col items-start">
               <img
                 src={logo}
                 alt="CREWNEXT logo"
@@ -86,7 +87,7 @@ export default function Footer() {
                 Nền tảng kết nối <span className="text-[#f0b33a]">Brand – Agency – Nhân sự</span> sự kiện hàng đầu Việt Nam.
               </p>
             </div>
-            
+            </div>
             {/* Quick stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((stat, index) => (
