@@ -170,7 +170,7 @@ export default function HowItWorks() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-white via-[#fafbfc] to-[#f8f9fa] py-20" aria-label="Cách CREWNEXT hoạt động">
+    <section className="bg-gradient-to-br from-white via-[#fafbfc] to-[#f8f9fa] py-20" aria-label="Cách Crewnect hoạt động">
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Section header */}
         <div className="mb-16 text-center">
@@ -392,8 +392,8 @@ export default function HowItWorks() {
               </h3>
               <p className="text-white/90 mb-6">
                 {viewType === "staff" 
-                  ? "Tham gia CREWNEXT ngay hôm nay và khám phá hàng nghìn cơ hội việc làm hấp dẫn trong ngành sự kiện."
-                  : "Đăng ký CREWNEXT để tiếp cận nguồn nhân lực chất lượng cao và quản lý sự kiện một cách chuyên nghiệp."
+                  ? "Tham gia Crewnect ngay hôm nay và khám phá hàng nghìn cơ hội việc làm hấp dẫn trong ngành sự kiện."
+                  : "Đăng ký Crewnect để tiếp cận nguồn nhân lực chất lượng cao và quản lý sự kiện một cách chuyên nghiệp."
                 }
               </p>
             </div>
