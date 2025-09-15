@@ -10,41 +10,44 @@ import {
 const aboutData = {
   hero: {
     title: "Kết nối nhân sự sự kiện với",
-    titleHighlight: "các agency hàng đầu",
-    subtitle: "Powered by AI • Trusted Globally • Future-Ready",
-    description: "Crewnect là nền tảng kết nối PG, PB, MC, Sup với hàng trăm agency sự kiện uy tín – nhanh chóng, minh bạch và hiệu quả.",
+    titleHighlight: "các agency uy tín",
+    subtitle: "Nhanh chóng • Minh bạch • Hiệu quả",
+    description:
+      "Crewnect là nền tảng tuyển dụng chuyên biệt cho ngành Event, nơi PG, PB, MC, Sup và nhân sự sự kiện dễ dàng kết nối với hàng trăm agency hàng đầu – nhanh gọn, rõ ràng và đáng tin cậy.",
     videoUrl: "/videos/hero-video.mp4",
-    achievements: ["ISO Certified", "AI-Powered", "Global Reach"]
+    achievements: ["Kết nối 5,000+ job", "Hơn 300 agency", "12,000+ ứng viên"]
   },
 
   realTimeStats: [
-    { number: "5,247", label: "Công việc sự kiện đã đăng", icon: Target, trend: "+12%", live: true },
-    { number: "342", label: "Agency tin tưởng", icon: Users, trend: "+8%", live: true },
+    { number: "5,247", label: "Ca làm đã đăng", icon: Target, trend: "+12%", live: true },
+    { number: "342", label: "Agency tin dùng", icon: Users, trend: "+8%", live: true },
     { number: "12,438", label: "Ứng viên tham gia", icon: Heart, trend: "+23%", live: true },
   ],
 
   achievements: [
-    { title: "Best Platform 2024", org: "Event Awards", icon: Award },
-    { title: "Innovation Leader", org: "Tech Summit", icon: Zap },
-    { title: "Top Employer", org: "HR Excellence", icon: Star },
+    { title: "Nền tảng sự kiện hàng đầu", org: "Event Awards 2024", icon: Award },
+    { title: "Giải pháp tuyển dụng sáng tạo", org: "Tech Summit", icon: Zap },
+    { title: "Được tin dùng bởi", org: "HR Excellence", icon: Star },
   ],
 
   mission: {
     title: "Sứ mệnh",
     mainTitle: "Kết nối nhân sự,",
     mainTitleHighlight: "nâng tầm sự kiện",
-    description: "Chúng tôi tin rằng mỗi sự kiện đều cần đội ngũ nhân sự chất lượng. Crewnect mang đến giải pháp giúp agency tìm đúng người – đúng việc, đồng thời tạo cơ hội việc làm minh bạch cho ứng viên.",
-    quote: "Sứ mệnh của chúng tôi là trở thành cầu nối giúp nhân sự sự kiện phát triển bền vững cùng ngành Event tại Việt Nam và khu vực Đông Nam Á.",
+    description:
+      "Mỗi sự kiện đều cần nhân sự phù hợp. Crewnect giúp agency tìm đúng người – đúng việc, đồng thời tạo ra cơ hội việc làm minh bạch, an toàn cho ứng viên.",
+    quote:
+      "Sứ mệnh của chúng tôi là trở thành cầu nối tin cậy, phát triển cộng đồng nhân sự sự kiện chuyên nghiệp tại Việt Nam và vươn tầm khu vực.",
     founder: {
       name: "Tung Nguyen Hoang",
-      position: "Founder & CEO",
-      image: "/images/founder.jpg",
+      position: "Founder",
+      image: "/t.jpg",
       linkedin: "https://linkedin.com/in/tungnguyenhoang",
-      credentials: "MBA, Tech Entrepreneur"
+      credentials: "UET, VNU"
     },
     metrics: [
-      { label: "Tỷ lệ thành công", value: "98.5%" },
-      { label: "Thời gian matching", value: "< 2 phút" },
+      { label: "Tỷ lệ matching thành công", value: "98.5%" },
+      { label: "Thời gian kết nối", value: "< 2 phút" },
       { label: "Độ hài lòng", value: "4.9/5" }
     ]
   },
@@ -52,36 +55,41 @@ const aboutData = {
   values: {
     title: "Giá trị cốt lõi",
     mainTitle: "Đội ngũ trẻ trung,",
-    mainTitleHighlight: "nhiệt huyết & sáng tạo",
-    description: "Chúng tôi là một tập thể trẻ trung, năng động và đam mê, luôn hướng đến sự đổi mới để tạo ra trải nghiệm tốt nhất cho cả ứng viên và agency.",
+    mainTitleHighlight: "nhiệt huyết & tận tâm",
+    description:
+      "Chúng tôi là tập thể trẻ trung, am hiểu ngành Event, luôn đổi mới để mang lại trải nghiệm tốt nhất cho cả ứng viên và agency.",
     items: [
       {
         title: "Tận tâm",
-        description: "Luôn đặt sự uy tín và chất lượng làm ưu tiên hàng đầu với cam kết 99.9% uptime.",
+        description:
+          "Cam kết mang đến trải nghiệm minh bạch, hỗ trợ ứng viên và agency mọi lúc.",
         icon: HandHeart,
         color: "from-orange-500 to-red-500",
-        metrics: "99.9% uptime"
+        metrics: "Hỗ trợ 24/7"
       },
       {
-        title: "Tư duy phát triển",
-        description: "Không ngừng cải tiến với AI và Machine Learning để mang lại nhiều cơ hội hơn.",
+        title: "Phát triển",
+        description:
+          "Không ngừng cải tiến nền tảng, giúp ứng viên có thêm nhiều cơ hội việc làm.",
         icon: Rocket,
         color: "from-yellow-500 to-orange-500",
-        metrics: "AI-Powered"
+        metrics: "5,000+ job"
       },
       {
         title: "Đổi mới",
-        description: "Ứng dụng công nghệ Blockchain và IoT để tối ưu quá trình tuyển dụng sự kiện.",
+        description:
+          "Ứng dụng công nghệ hiện đại để đơn giản hóa tuyển dụng sự kiện.",
         icon: Lightbulb,
         color: "from-green-500 to-teal-500",
-        metrics: "Blockchain Ready"
+        metrics: "Smart Matching"
       },
       {
         title: "Hợp tác",
-        description: "Đồng hành cùng ứng viên và agency với hệ sinh thái toàn diện và bền vững.",
+        description:
+          "Xây dựng cộng đồng gắn kết giữa nhân sự và agency, phát triển bền vững.",
         icon: Sprout,
         color: "from-teal-500 to-blue-500",
-        metrics: "Ecosystem"
+        metrics: "Community"
       },
     ],
   },
@@ -90,13 +98,14 @@ const aboutData = {
     title: "Đội ngũ",
     mainTitle: "Trải nghiệm chuyên nghiệp cùng",
     mainTitleHighlight: "đội ngũ Crewnect",
-    description: "Crewnect được xây dựng bởi những người trẻ am hiểu ngành sự kiện và công nghệ. Chúng tôi luôn sẵn sàng đồng hành cùng bạn để nâng tầm trải nghiệm tuyển dụng.",
+    description:
+      "Crewnect được xây dựng bởi những người trẻ am hiểu ngành Event & Công nghệ. Chúng tôi luôn sẵn sàng đồng hành để mang lại trải nghiệm tuyển dụng tốt nhất.",
     members: [
       {
         name: "Nguyễn Kim Thư",
         position: "Brand Manager",
         image: "/images/team/a.jpg",
-        bio: "Chuyên gia branding với 5+ năm kinh nghiệm",
+        bio: "Đại học Giáo Dục - ĐHQGHN",
         skills: ["Brand Strategy", "Digital Marketing", "UX/UI"],
         linkedin: "https://linkedin.com/in/kimthu",
         status: "online"
@@ -105,7 +114,7 @@ const aboutData = {
         name: "Nguyễn Hoàng Bảo Nhật",
         position: "AI Engineer",
         image: "/images/team/b.jpg",
-        bio: "Kỹ sư AI đam mê công nghệ và đổi mới",
+        bio: "Đại học Văn Lang",
         skills: ["Machine Learning", "Deep Learning", "Python"],
         linkedin: "https://linkedin.com/in/baonhat",
         status: "online"
@@ -114,7 +123,7 @@ const aboutData = {
         name: "Võ Thành Nhân",
         position: "Finance Manager",
         image: "/images/team/c.jpg",
-        bio: "Chuyên gia tài chính với tư duy chiến lược",
+        bio: "Đại học Kinh Tế TP.HCM",
         skills: ["Financial Analysis", "Investment", "Strategy"],
         linkedin: "https://linkedin.com/in/thanhnhan",
         status: "away"
@@ -124,7 +133,8 @@ const aboutData = {
 
   testimonials: [
     {
-      quote: "Crewnect đã thay đổi hoàn toàn cách chúng tôi tuyển dụng nhân sự sự kiện. Nền tảng AI thông minh và hiệu quả tuyệt vời!",
+      quote:
+        "Crewnect đã giúp chúng tôi tuyển dụng PG/PB nhanh chóng, minh bạch và cực kỳ tiện lợi.",
       author: "Sarah Chen",
       position: "Event Director, Galaxy Events",
       avatar: "/images/testimonial-1.jpg",
@@ -132,10 +142,11 @@ const aboutData = {
       rating: 5
     },
     {
-      quote: "Công nghệ matching của Crewnect giúp chúng tôi tìm được đúng người trong thời gian kỷ lục. Truly international standard!",
+      quote:
+        "Nhờ Crewnect, chúng tôi tìm được đúng nhân sự cho các activation lớn chỉ trong vài phút.",
       author: "Michael Johnson",
       position: "CEO, Premium Productions",
-      avatar: "/images/testimonial-2.jpg", 
+      avatar: "/images/testimonial-2.jpg",
       company: "Premium Productions",
       rating: 5
     }
@@ -975,7 +986,7 @@ export default function AboutPage() {
     // Preload critical images
     const criticalImages = [
       '/images/founder.jpg',
-      '/images/team/a.jpg', 
+      '/th.jpg', 
       '/images/team/b.jpg',
       '/images/team/c.jpg'
     ];
