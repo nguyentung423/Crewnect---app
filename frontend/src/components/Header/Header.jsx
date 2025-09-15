@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoMenuSharp, IoClose } from "react-icons/io5";
-import navLogo from "../../assets/react.svg"; // ✅ đường dẫn chuẩn
+import navLogo from "../../assets/logo.svg"; // ✅ đường dẫn chuẩn
 
 const navLinks = [
   { name: "Trang chủ", path: "/" },
