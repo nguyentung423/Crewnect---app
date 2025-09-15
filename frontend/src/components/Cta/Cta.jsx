@@ -89,7 +89,7 @@ export default function Cta() {
             </span>
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
-            Tham gia CREWNEXT - nền tảng kết nối nhân sự sự kiện hàng đầu Việt Nam
+            Tham gia Crewnect - nền tảng kết nối nhân sự sự kiện hàng đầu Việt Nam
           </p>
           
           {/* Quick stats */}

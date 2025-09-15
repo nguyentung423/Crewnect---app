@@ -16,7 +16,7 @@ const shifts = [
     category: "Promotion",
     requirements: ["Ngoại hình khá", "Giao tiếp tốt"],
     deadline: "12:00 hôm nay",
-    image: "https://via.placeholder.com/400x200/ab3f20/FFFFFF?text=PG+Booth",
+    image: "/pg.png",
     description: "Tư vấn và giới thiệu sản phẩm tại booth trưng bày sản phẩm công nghệ"
   },
   {
