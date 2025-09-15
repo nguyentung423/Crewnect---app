@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   ChevronDown, Users, Target, Heart, Lightbulb, Rocket, HandHeart, Sprout,
   Play, Pause, Volume2, VolumeX, Globe, Award, Zap, Star, ArrowRight,
-  MousePointer, Sparkles, Eye, TrendingUp, Shield, Clock
+   Sparkles, Eye, TrendingUp, Shield, Clock
 } from 'lucide-react';
 
 // Enhanced Data Configuration
@@ -64,7 +64,7 @@ const aboutData = {
         description:
           "Cam kết mang đến trải nghiệm minh bạch, hỗ trợ ứng viên và agency mọi lúc.",
         icon: HandHeart,
-        color: "from-orange-500 to-red-500",
+        color: "from-orange-700 to-orange-600",
         metrics: "Hỗ trợ 24/7"
       },
       {
@@ -72,7 +72,7 @@ const aboutData = {
         description:
           "Không ngừng cải tiến nền tảng, giúp ứng viên có thêm nhiều cơ hội việc làm.",
         icon: Rocket,
-        color: "from-yellow-500 to-orange-500",
+        color: "from-orange-600 to-orange-500",
         metrics: "5,000+ job"
       },
       {
@@ -80,7 +80,7 @@ const aboutData = {
         description:
           "Ứng dụng công nghệ hiện đại để đơn giản hóa tuyển dụng sự kiện.",
         icon: Lightbulb,
-        color: "from-green-500 to-teal-500",
+        color: "from-green-700 to-green-600",
         metrics: "Smart Matching"
       },
       {
@@ -88,7 +88,7 @@ const aboutData = {
         description:
           "Xây dựng cộng đồng gắn kết giữa nhân sự và agency, phát triển bền vững.",
         icon: Sprout,
-        color: "from-teal-500 to-blue-500",
+        color: "from-green-600 to-green-500",
         metrics: "Community"
       },
     ],
@@ -243,32 +243,14 @@ const useCursorTracker = () => {
 };
 
 // Advanced Components
-const CustomCursor = () => {
-  const { position, isPointer } = useCursorTracker();
 
-  return (
-    <div 
-      className={`fixed pointer-events-none z-50 transition-all duration-200 ${
-        isPointer ? 'scale-150' : 'scale-100'
-      }`}
-      style={{ 
-        left: `${position.x}px`, 
-        top: `${position.y}px`,
-        transform: 'translate(-50%, -50%)'
-      }}
-    >
-      <div className="w-4 h-4 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full opacity-80 blur-sm"></div>
-      <div className="absolute inset-0 w-2 h-2 bg-white rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-    </div>
-  );
-};
 
 const FloatingElements = () => (
   <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
     {[...Array(20)].map((_, i) => (
       <div
         key={i}
-        className="absolute w-1 h-1 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full opacity-30"
+        className="absolute w-1 h-1 bg-gradient-to-r from-orange-600 to-orange-500 rounded-full opacity-30"
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
@@ -345,7 +327,7 @@ const VideoPlayer = ({ videoUrl, className = "" }) => {
             </button>
             <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 transition-all duration-150"
+                className="h-full bg-gradient-to-r from-orange-600 to-orange-500 transition-all duration-150"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -380,13 +362,13 @@ const HeroSection = ({ hero }) => {
   return (
     <>
       <FloatingElements />
-      <CustomCursor />
+      
       <div ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Video/Animation */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-yellow-500/5 to-green-500/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-orange-500/5 to-green-600/10"></div>
           <div 
-            className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(171,63,32,0.1)_0%,transparent_50%)] transform"
+            className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(194,108,65,0.1)_0%,transparent_50%)] transform"
             style={{ transform: `translateY(${scrollY * 0.3}px)` }}
           ></div>
         </div>
@@ -396,7 +378,7 @@ const HeroSection = ({ hero }) => {
           <div className={`inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8 transform transition-all duration-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <Sparkles className="w-5 h-5 text-yellow-400" />
+            <Sparkles className="w-5 h-5 text-orange-500" />
             <span className="text-sm font-medium text-gray-700">
               {hero.achievements[currentAchievement]}
             </span>
@@ -412,14 +394,14 @@ const HeroSection = ({ hero }) => {
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 text-gray-900 leading-none tracking-tight">
               {hero.title}{' '}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-orange-600 via-yellow-500 to-green-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-700 via-orange-600 to-green-700 bg-clip-text text-transparent">
                   {hero.titleHighlight}
                 </span>
-                <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-orange-600 via-yellow-500 to-green-600 transform scale-x-0 animate-pulse"></div>
+                <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-orange-700 via-orange-600 to-green-700 transform scale-x-0 animate-pulse"></div>
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-orange-600 font-semibold mb-8 tracking-wide">
+            <p className="text-lg md:text-xl text-orange-700 font-semibold mb-8 tracking-wide">
               {hero.subtitle}
             </p>
 
@@ -432,26 +414,22 @@ const HeroSection = ({ hero }) => {
           <div className={`flex flex-col md:flex-row gap-6 justify-center items-center transform transition-all duration-1000 delay-600 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
           }`}>
-            <button className="group relative px-12 py-6 bg-gradient-to-r from-orange-600 to-yellow-500 text-white font-bold text-lg rounded-2xl hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-500/25">
+            <button className="group relative px-12 py-6 bg-gradient-to-r from-orange-700 to-orange-600 text-white font-bold text-lg rounded-2xl hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-orange-600/25">
               <span className="relative z-10 flex items-center gap-3">
                 Khám phá ngay
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
             </button>
             
-            <button className="px-8 py-6 border-2 border-gray-300 text-gray-700 font-semibold text-lg rounded-2xl hover:border-orange-500 hover:text-orange-600 transition-all duration-300 backdrop-blur-md bg-white/80">
+            <button className="px-8 py-6 border-2 border-gray-300 text-gray-700 font-semibold text-lg rounded-2xl hover:border-orange-600 hover:text-orange-700 transition-all duration-300 backdrop-blur-md bg-white/80">
               <Play className="w-5 h-5 inline mr-2" />
               Xem demo
             </button>
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-orange-500 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-orange-500 rounded-full mt-2 animate-pulse"></div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </>
@@ -463,12 +441,12 @@ const RealTimeStatsSection = ({ stats }) => {
   
   return (
     <div ref={ref} className="relative py-24">
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-50 via-yellow-50 to-green-50"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-stone-50 via-gray-50 to-stone-50"></div>
       
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Thống kê <span className="text-orange-600">Real-time</span>
+            Thống kê <span className="text-orange-700">Real-time</span>
           </h2>
           <p className="text-xl text-gray-600">Dữ liệu cập nhật trực tiếp từ hệ thống</p>
         </div>
@@ -487,21 +465,21 @@ const RealTimeStatsSection = ({ stats }) => {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl border border-white/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                <div className="bg-white/80 backdrop-blur-lg p-8 rounded-3xl border border-gray-200 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                   {/* Live Indicator */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm font-medium text-green-600">LIVE</span>
+                      <div className="w-3 h-3 bg-green-600 rounded-full animate-pulse"></div>
+                      <span className="text-sm font-medium text-green-700">LIVE</span>
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-green-600">
+                    <div className="flex items-center gap-1 text-sm text-green-700">
                       <TrendingUp className="w-4 h-4" />
                       {stat.trend}
                     </div>
                   </div>
 
                   {/* Icon */}
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
 
@@ -516,7 +494,7 @@ const RealTimeStatsSection = ({ stats }) => {
                   {/* Progress Bar */}
                   <div className="mt-4 h-2 bg-gray-200 rounded-full overflow-hidden">
                     <div 
-                      className="h-full bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full transition-all duration-2000"
+                      className="h-full bg-gradient-to-r from-orange-600 to-orange-700 rounded-full transition-all duration-2000"
                       style={{ width: isVisible ? `${75 + index * 10}%` : '0%' }}
                     ></div>
                   </div>
@@ -538,7 +516,7 @@ const AchievementsSection = ({ achievements }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Thành tựu & <span className="bg-gradient-to-r from-orange-600 to-yellow-500 bg-clip-text text-transparent">Chứng nhận</span>
+            Thành tựu & <span className="bg-gradient-to-r from-orange-700 to-orange-600 bg-clip-text text-transparent">Chứng nhận</span>
           </h2>
           <p className="text-xl text-gray-600">Được công nhận bởi các tổ chức uy tín quốc tế</p>
         </div>
@@ -555,11 +533,11 @@ const AchievementsSection = ({ achievements }) => {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
-                  <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-20 h-20 bg-gradient-to-br from-orange-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{achievement.title}</h3>
-                  <p className="text-orange-600 font-medium">{achievement.org}</p>
+                  <p className="text-orange-700 font-medium">{achievement.org}</p>
                 </div>
               </div>
             );
@@ -582,11 +560,11 @@ const TestimonialsSection = ({ testimonials }) => {
   }, [testimonials.length]);
 
   return (
-    <div ref={ref} className="py-24 bg-gradient-to-r from-orange-50 via-yellow-50 to-green-50">
+    <div ref={ref} className="py-24 bg-gradient-to-r from-stone-50 via-gray-50 to-stone-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Khách hàng <span className="text-orange-600">nói gì</span>
+            Khách hàng <span className="text-orange-700">nói gì</span>
           </h2>
         </div>
 
@@ -598,10 +576,10 @@ const TestimonialsSection = ({ testimonials }) => {
                 index === currentTestimonial ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full absolute inset-0'
               }`}
             >
-              <div className="bg-white/80 backdrop-blur-lg p-12 rounded-3xl shadow-2xl border border-white/50">
+              <div className="bg-white/80 backdrop-blur-lg p-12 rounded-3xl shadow-2xl border border-gray-200">
                 <div className="flex mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-6 h-6 text-orange-600 fill-current" />
                   ))}
                 </div>
                 
@@ -610,7 +588,7 @@ const TestimonialsSection = ({ testimonials }) => {
                 </blockquote>
                 
                 <div className="flex items-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full flex items-center justify-center mr-4 overflow-hidden">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-600 to-orange-700 rounded-full flex items-center justify-center mr-4 overflow-hidden">
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.author}
@@ -623,7 +601,7 @@ const TestimonialsSection = ({ testimonials }) => {
                   </div>
                   <div>
                     <h4 className="text-xl font-bold text-gray-900">{testimonial.author}</h4>
-                    <p className="text-orange-600 font-medium">{testimonial.position}</p>
+                    <p className="text-orange-700 font-medium">{testimonial.position}</p>
                     <p className="text-gray-500 text-sm">{testimonial.company}</p>
                   </div>
                 </div>
@@ -639,7 +617,7 @@ const TestimonialsSection = ({ testimonials }) => {
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-4 h-4 rounded-full transition-all duration-300 ${
                   index === currentTestimonial 
-                    ? 'bg-gradient-to-r from-orange-500 to-yellow-500 scale-125' 
+                    ? 'bg-gradient-to-r from-orange-600 to-orange-700 scale-125' 
                     : 'bg-gray-300 hover:bg-gray-400'
                 }`}
               />
@@ -661,14 +639,14 @@ const EnhancedMissionSection = ({ mission }) => {
           <div className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
           }`}>
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-semibold text-sm rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-semibold text-sm rounded-full mb-8">
               <Globe className="w-4 h-4" />
               {mission.title}
             </div>
             
             <h3 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 leading-tight">
               {mission.mainTitle}{' '}
-              <span className="bg-gradient-to-r from-orange-600 via-yellow-500 to-green-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-700 via-orange-600 to-green-700 bg-clip-text text-transparent">
                 {mission.mainTitleHighlight}
               </span>
             </h3>
@@ -679,7 +657,7 @@ const EnhancedMissionSection = ({ mission }) => {
             <div className="grid grid-cols-3 gap-6 mb-8">
               {mission.metrics.map((metric, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-3xl font-black text-orange-600 mb-2">{metric.value}</div>
+                  <div className="text-3xl font-black text-orange-700 mb-2">{metric.value}</div>
                   <div className="text-sm text-gray-600 font-medium">{metric.label}</div>
                 </div>
               ))}
@@ -691,8 +669,8 @@ const EnhancedMissionSection = ({ mission }) => {
           }`}>
             <div className="relative">
               {/* Glassmorphism Quote Card */}
-              <div className="bg-white/60 backdrop-blur-xl p-10 rounded-3xl border border-white/30 shadow-2xl">
-                <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-full flex items-center justify-center">
+              <div className="bg-white/60 backdrop-blur-xl p-10 rounded-3xl border border-gray-200 shadow-2xl">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full flex items-center justify-center">
                   <span className="text-white text-lg font-bold">"</span>
                 </div>
                 
@@ -703,7 +681,7 @@ const EnhancedMissionSection = ({ mission }) => {
                 {/* Enhanced Founder Card */}
                 <div className="flex items-center">
                   <div className="relative">
-                    <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl flex items-center justify-center overflow-hidden">
+                    <div className="w-20 h-20 bg-gradient-to-br from-orange-600 to-orange-700 rounded-2xl flex items-center justify-center overflow-hidden">
                       <img
                         src={mission.founder.image}
                         alt={mission.founder.name}
@@ -714,29 +692,29 @@ const EnhancedMissionSection = ({ mission }) => {
                         }}
                       />
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
                       <Shield className="w-4 h-4 text-white" />
                     </div>
                   </div>
                   
                   <div className="ml-6">
                     <h4 className="text-2xl font-bold text-gray-900">{mission.founder.name}</h4>
-                    <p className="text-orange-600 font-semibold text-lg">{mission.founder.position}</p>
+                    <p className="text-orange-700 font-semibold text-lg">{mission.founder.position}</p>
                     <p className="text-gray-500 text-sm">{mission.founder.credentials}</p>
                     
                     <div className="flex items-center mt-2 gap-2">
-                      <a href={mission.founder.linkedin} className="text-blue-600 hover:text-blue-700 transition-colors">
+                      <a href={mission.founder.linkedin} className="text-orange-700 hover:text-orange-800 transition-colors">
                         <Globe className="w-4 h-4" />
                       </a>
-                      <span className="text-green-600 text-xs font-medium">Verified Leader</span>
+                      <span className="text-green-700 text-xs font-medium">Verified Leader</span>
                     </div>
                   </div>
                 </div>
               </div>
               
               {/* Floating Elements */}
-              <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r from-green-400 to-teal-500 rounded-full opacity-30 animate-bounce"></div>
+              <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-r from-orange-600 to-orange-700 rounded-full opacity-20 animate-pulse"></div>
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-gradient-to-r from-green-600 to-green-700 rounded-full opacity-30 animate-bounce"></div>
             </div>
           </div>
         </div>
@@ -750,20 +728,20 @@ const AdvancedValuesSection = ({ values }) => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
-    <div ref={ref} className="py-24 bg-gradient-to-br from-gray-50 to-white">
+    <div ref={ref} className="py-24 bg-gradient-to-br from-stone-50 to-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className={`transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
           }`}>
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold text-sm rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold text-sm rounded-full mb-8">
               <Zap className="w-4 h-4" />
               {values.title}
             </div>
             
             <h3 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 leading-tight">
               {values.mainTitle}{' '}
-              <span className="bg-gradient-to-r from-green-600 via-teal-500 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-green-700 via-green-600 to-orange-700 bg-clip-text text-transparent">
                 {values.mainTitleHighlight}
               </span>
             </h3>
@@ -793,7 +771,7 @@ const AdvancedValuesSection = ({ values }) => {
                       <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2" fill="none" className="text-gray-200" />
                       <circle 
                         cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="2" fill="none"
-                        className={`text-orange-500 transition-all duration-1000 ${hoveredCard === index ? 'stroke-dasharray-75 stroke-dashoffset-0' : 'stroke-dasharray-0'}`}
+                        className={`text-orange-600 transition-all duration-1000 ${hoveredCard === index ? 'stroke-dasharray-75 stroke-dashoffset-0' : 'stroke-dasharray-0'}`}
                         style={{ strokeDasharray: '75.4', strokeDashoffset: hoveredCard === index ? '0' : '75.4' }}
                       />
                     </svg>
@@ -839,14 +817,14 @@ const PremiumTeamSection = ({ team }) => {
         <div className={`text-center mb-20 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold text-sm rounded-full mb-8">
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold text-sm rounded-full mb-8">
             <Users className="w-4 h-4" />
             {team.title}
           </div>
           
           <h3 className="text-5xl md:text-7xl font-black text-gray-900 mb-8 leading-tight">
             {team.mainTitle}{' '}
-            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-green-700 via-green-600 to-orange-700 bg-clip-text text-transparent">
               {team.mainTitleHighlight}
             </span>
           </h3>
@@ -874,13 +852,13 @@ const PremiumTeamSection = ({ team }) => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-white text-8xl font-bold">${member.name.charAt(0)}</div>`;
+                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-orange-600 to-green-600 flex items-center justify-center text-white text-8xl font-bold">${member.name.charAt(0)}</div>`;
                     }}
                   />
                   
                   {/* Status Indicator */}
                   <div className="absolute top-4 right-4 flex items-center gap-2 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full">
-                    <div className={`w-2 h-2 rounded-full ${member.status === 'online' ? 'bg-green-500' : 'bg-yellow-500'}`}></div>
+                    <div className={`w-2 h-2 rounded-full ${member.status === 'online' ? 'bg-green-600' : 'bg-orange-600'}`}></div>
                     <span className="text-xs font-medium text-gray-700 capitalize">{member.status}</span>
                   </div>
                   
@@ -905,13 +883,13 @@ const PremiumTeamSection = ({ team }) => {
                 {/* Member Info */}
                 <div className="p-8">
                   <h4 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h4>
-                  <p className="text-lg font-semibold text-purple-600 mb-3">{member.position}</p>
+                  <p className="text-lg font-semibold text-orange-700 mb-3">{member.position}</p>
                   <p className="text-gray-600 leading-relaxed">{member.bio}</p>
                   
                   {/* Interaction Button */}
                   <button 
                     onClick={() => setSelectedMember(selectedMember === index ? null : index)}
-                    className="mt-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300"
+                    className="mt-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300"
                   >
                     <Eye className="w-4 h-4" />
                     {selectedMember === index ? 'Hide Details' : 'View Details'}
@@ -921,11 +899,11 @@ const PremiumTeamSection = ({ team }) => {
                   <div className={`mt-4 overflow-hidden transition-all duration-500 ${
                     selectedMember === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
                   }`}>
-                    <div className="p-4 bg-gray-50 rounded-xl">
+                    <div className="p-4 bg-stone-50 rounded-xl">
                       <h5 className="font-semibold text-gray-900 mb-2">Core Skills:</h5>
                       <div className="flex flex-wrap gap-2">
                         {member.skills.map((skill, skillIndex) => (
-                          <span key={skillIndex} className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-medium rounded-lg">
+                          <span key={skillIndex} className="px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-lg">
                             {skill}
                           </span>
                         ))}
@@ -935,7 +913,7 @@ const PremiumTeamSection = ({ team }) => {
                 </div>
                 
                 {/* Corner Accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-purple-500 to-transparent opacity-20"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-orange-600 to-transparent opacity-20"></div>
               </div>
             </div>
           ))}
@@ -955,7 +933,7 @@ const InteractiveVideoSection = () => {
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
         }`}>
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Trải nghiệm <span className="bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">tương lai</span>
+            Trải nghiệm <span className="bg-gradient-to-r from-orange-600 to-orange-700 bg-clip-text text-transparent">tương lai</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Khám phá công nghệ AI tiên tiến đang cách mạng hóa ngành sự kiện
