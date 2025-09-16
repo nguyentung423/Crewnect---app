@@ -39,11 +39,11 @@ const aboutData = {
     quote:
       "Sứ mệnh của chúng tôi là trở thành cầu nối tin cậy, phát triển cộng đồng nhân sự sự kiện chuyên nghiệp tại Việt Nam và vươn tầm khu vực.",
     founder: {
-      name: "Tung Nguyen Hoang",
+      name: "Nguyễn Hoàng Tùng",
       position: "Founder",
       image: "/t.jpg",
       linkedin: "https://linkedin.com/in/tungnguyenhoang",
-      credentials: "UET, VNU"
+      credentials: "Trường Đại học Công Nghệ - ĐHQGHN"
     },
     metrics: [
       { label: "Tỷ lệ matching thành công", value: "98.5%" },
@@ -105,7 +105,7 @@ const aboutData = {
         name: "Nguyễn Kim Thư",
         position: "Brand Manager",
         image: "/th.png",
-        bio: "Đại học Giáo Dục - ĐHQGHN",
+        bio: " Trường Đại học Giáo Dục - ĐHQGHN",
         skills: ["Brand Strategy", "Digital Marketing", "UX/UI"],
         linkedin: "https://www.facebook.com/nguyen.thu.367533",
         status: "online"
@@ -114,7 +114,7 @@ const aboutData = {
         name: "Nguyễn Hoàng Bảo Nhật",
         position: "AI Engineer",
         image: "/images/team/b.jpg",
-        bio: "Đại học Văn Lang",
+        bio: "Trường Đại học Văn Lang",
         skills: ["Machine Learning", "Deep Learning", "Python"],
         linkedin: "https://linkedin.com/in/baonhat",
         status: "online"
@@ -135,8 +135,8 @@ const aboutData = {
     {
       quote:
         "Crewnect đã giúp chúng tôi tuyển dụng PG/PB nhanh chóng, minh bạch và cực kỳ tiện lợi.",
-      author: "Sarah Chen",
-      position: "Event Director, Galaxy Events",
+      author: "Nguyễn Thắng",
+      position: "Event Director, Shine Invest",
       avatar: "/images/testimonial-1.jpg",
       company: "Galaxy Events",
       rating: 5
@@ -144,7 +144,7 @@ const aboutData = {
     {
       quote:
         "Nhờ Crewnect, chúng tôi tìm được đúng nhân sự cho các activation lớn chỉ trong vài phút.",
-      author: "Michael Johnson",
+      author: "Tố Nguyên",
       position: "CEO, Premium Productions",
       avatar: "/images/testimonial-2.jpg",
       company: "Premium Productions",
