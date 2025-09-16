@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // HERO SECTION — CREWNEXT PREMIUM UPGRADE
 // Enhanced with modern animations, glass morphism, and interactive elements
@@ -124,26 +125,31 @@ export default function Hero() {
             </p>
 
             {/* Enhanced CTAs with micro-interactions */}
-            <div className="flex flex-col gap-4 sm:flex-row animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-              <a
-                href="/jobs"
-                className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#ab3f20] to-[#ab3f20]/90 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-[#ab3f20]/30 transition-all hover:scale-105 hover:shadow-[#ab3f20]/40 active:scale-95"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-[#f0b33a] to-[#ab3f20] opacity-0 transition-opacity group-hover:opacity-20" />
-                <span className="relative z-10">Tìm việc ngay</span>
-                <div className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-8 transform text-2xl transition-transform group-hover:translate-x-2">
-                  →
-                </div>
-              </a>
+            <div
+  className="flex flex-col gap-4 sm:flex-row animate-fadeInUp"
+  style={{ animationDelay: "0.4s" }}
+>
+  {/* ✅ Tìm việc ngay → LoginCandidate */}
+  <Link
+    to="/login/candidate"
+    className="group relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#ab3f20] to-[#ab3f20]/90 px-8 py-4 text-lg font-bold text-white shadow-2xl shadow-[#ab3f20]/30 transition-all hover:scale-105 hover:shadow-[#ab3f20]/40 active:scale-95"
+  >
+    <span className="absolute inset-0 bg-gradient-to-r from-[#f0b33a] to-[#ab3f20] opacity-0 transition-opacity group-hover:opacity-20" />
+    <span className="relative z-10">Tìm việc ngay</span>
+    <div className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-8 transform text-2xl transition-transform group-hover:translate-x-2">
+      →
+    </div>
+  </Link>
 
-              <a
-                href="/signup"
-                className="group relative overflow-hidden rounded-2xl border-2 border-[#e0e0e0] bg-white/80 px-8 py-4 text-lg font-bold text-[#333333] backdrop-blur-md transition-all hover:border-[#536b4e] hover:scale-105 hover:bg-white hover:text-[#536b4e] hover:shadow-xl active:scale-95"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-[#536b4e]/10 to-[#f0b33a]/10 opacity-0 transition-opacity group-hover:opacity-100" />
-                <span className="relative z-10">Đăng ký nhân sự</span>
-              </a>
-            </div>
+  {/* ✅ Đăng ký đối tác → LoginAgency */}
+  <Link
+    to="/login/agency"
+    className="group relative overflow-hidden rounded-2xl border-2 border-[#e0e0e0] bg-white/80 px-8 py-4 text-lg font-bold text-[#333333] backdrop-blur-md transition-all hover:border-[#536b4e] hover:scale-105 hover:bg-white hover:text-[#536b4e] hover:shadow-xl active:scale-95"
+  >
+    <span className="absolute inset-0 bg-gradient-to-r from-[#536b4e]/10 to-[#f0b33a]/10 opacity-0 transition-opacity group-hover:opacity-100" />
+    <span className="relative z-10">Đăng ký đối tác</span>
+  </Link>
+</div>
 
             {/* Enhanced social proof with counters */}
             <div className="flex flex-wrap items-center gap-6 animate-fadeInUp" style={{ animationDelay: '0.5s' }}>
