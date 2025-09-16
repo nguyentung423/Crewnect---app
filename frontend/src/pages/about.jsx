@@ -125,7 +125,7 @@ const aboutData = {
         image: "/n.png",
         bio: "Đại học Kinh Tế TP.HCM",
         skills: ["Financial Analysis", "Investment", "Strategy"],
-        linkedin: "https://linkedin.com/in/thanhnhan",
+        linkedin: "https://www.facebook.com/profile.php?id=100041105261085&mibextid=ZbWKwL",
         status: "away"
       },
     ],
