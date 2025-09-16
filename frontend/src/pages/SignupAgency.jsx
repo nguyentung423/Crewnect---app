@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { signup } from "../lib/authApi";
 
 import { 
   Building2, 
@@ -17,6 +18,9 @@ import {
   Globe
 } from "lucide-react";
 
+// Mock Link component for demonstration
+
+ 
 
 export default function SignupAgency() {
   const [formData, setFormData] = useState({
@@ -165,6 +169,12 @@ export default function SignupAgency() {
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
             </Link>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
+                <Calendar className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-bold text-gray-900">EventHire</span>
+            </div>
           </div>
         </div>
       </div>
@@ -179,7 +189,7 @@ export default function SignupAgency() {
             Đăng ký Nhà tuyển dụng
           </h1>
           <p className="text-lg text-gray-600 mb-2">
-            Tham gia Crewnect để tìm kiếm nhân tài cho dự án sự kiện của bạn
+            Tham gia EventHire để tìm kiếm nhân tài cho dự án sự kiện của bạn
           </p>
           <p className="text-gray-500">
             Miễn phí đăng ký và sử dụng các tính năng cơ bản
@@ -368,7 +378,7 @@ export default function SignupAgency() {
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
             <p className="text-gray-600">
               Đã có tài khoản?{" "}
-              <Link to="/login/agency" className="text-orange-600 hover:text-orange-700 font-semibold">
+              <Link to="/login" className="text-orange-600 hover:text-orange-700 font-semibold">
                 Đăng nhập ngay
               </Link>
             </p>

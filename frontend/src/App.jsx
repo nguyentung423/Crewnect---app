@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import Home from "./pages/Home";
-import About from "./pages/about"; // ✅ import About
+import About from "./pages/about";
 
 // import thêm các trang mới
 import Signup from "./pages/Signup";
@@ -9,6 +9,9 @@ import SignupCandidate from "./pages/SignupCandidate";
 import SignupAgency from "./pages/SignupAgency";
 import LoginCandidate from "./pages/LoginCandidate";
 import LoginAgency from "./pages/LoginAgency";
+
+// ✅ import TestSupabase
+import TestSupabase from "./TestSupabase";
 
 const App = () => {
   return (
@@ -26,6 +29,9 @@ const App = () => {
           {/* Login flow */}
           <Route path="/login/candidate" element={<LoginCandidate />} />
           <Route path="/login/agency" element={<LoginAgency />} />
+
+          {/* ✅ Test Supabase */}
+          <Route path="/test-supabase" element={<TestSupabase />} />
 
           {/* 404 */}
           <Route

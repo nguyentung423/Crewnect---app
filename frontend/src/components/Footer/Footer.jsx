@@ -214,7 +214,7 @@ export default function Footer() {
                 <div>
                   <p className="text-white/90 font-medium">Hotline</p>
                   <a href="tel:0123456789" className="text-white/70 hover:text-[#f0b33a] transition-colors duration-300">
-                    0123 456 789
+                    037 491 8396
                   </a>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <div className="text-white/60 text-sm text-center md:text-right">
-              <p>© {new Date().getFullYear()} CREWNEXT. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Crewnect. All rights reserved.</p>
               <p className="text-xs mt-1">Made with ❤️ in Vietnam</p>
             </div>
           </div>
