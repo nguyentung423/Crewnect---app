@@ -1,6 +1,4 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import { 
   Calendar, 
@@ -23,6 +21,90 @@ import {
   FileText
 } from "lucide-react";
 
+const InputField = ({ icon: Icon, error, type = "text", ...props }) => (
+  <div className="space-y-1">
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <Icon className="h-5 w-5 text-gray-400" />
+      </div>
+      <input
+        type={type}
+        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
+          error 
+            ? 'border-red-300 bg-red-50' 
+            : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
+        }`}
+        {...props}
+      />
+    </div>
+    {error && (
+      <div className="flex items-center space-x-1 text-red-600 text-sm">
+        <AlertCircle className="h-4 w-4" />
+        <span>{error}</span>
+      </div>
+    )}
+  </div>
+);
+
+const TextareaField = ({ icon: Icon, error, ...props }) => (
+  <div className="space-y-1">
+    <div className="relative">
+      <div className="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
+        <Icon className="h-5 w-5 text-gray-400" />
+      </div>
+      <textarea
+        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[100px] resize-vertical ${
+          error 
+            ? 'border-red-300 bg-red-50' 
+            : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
+        }`}
+        {...props}
+      />
+    </div>
+    {error && (
+      <div className="flex items-center space-x-1 text-red-600 text-sm">
+        <AlertCircle className="h-4 w-4" />
+        <span>{error}</span>
+      </div>
+    )}
+  </div>
+);
+
+const PasswordField = ({ icon: Icon, error, show, onToggle, ...props }) => (
+  <div className="space-y-1">
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <Icon className="h-5 w-5 text-gray-400" />
+      </div>
+      <input
+        type={show ? "text" : "password"}
+        className={`w-full pl-10 pr-12 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
+          error 
+            ? 'border-red-300 bg-red-50' 
+            : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
+        }`}
+        {...props}
+      />
+      <button
+        type="button"
+        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+        onClick={onToggle}
+      >
+        {show ? (
+          <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+        ) : (
+          <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+        )}
+      </button>
+    </div>
+    {error && (
+      <div className="flex items-center space-x-1 text-red-600 text-sm">
+        <AlertCircle className="h-4 w-4" />
+        <span>{error}</span>
+      </div>
+    )}
+  </div>
+);
 
 export default function SignupCandidate() {
   const [formData, setFormData] = useState({
@@ -127,101 +209,16 @@ export default function SignupCandidate() {
     }, 2000);
   };
 
-  const InputField = ({ icon: Icon, error, type = "text", ...props }) => (
-    <div className="space-y-1">
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Icon className="h-5 w-5 text-gray-400" />
-        </div>
-        <input
-          type={type}
-          className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-            error 
-              ? 'border-red-300 bg-red-50' 
-              : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
-          }`}
-          {...props}
-        />
-      </div>
-      {error && (
-        <div className="flex items-center space-x-1 text-red-600 text-sm">
-          <AlertCircle className="h-4 w-4" />
-          <span>{error}</span>
-        </div>
-      )}
-    </div>
-  );
-
-  const TextareaField = ({ icon: Icon, error, ...props }) => (
-    <div className="space-y-1">
-      <div className="relative">
-        <div className="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
-          <Icon className="h-5 w-5 text-gray-400" />
-        </div>
-        <textarea
-          className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[100px] resize-vertical ${
-            error 
-              ? 'border-red-300 bg-red-50' 
-              : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
-          }`}
-          {...props}
-        />
-      </div>
-      {error && (
-        <div className="flex items-center space-x-1 text-red-600 text-sm">
-          <AlertCircle className="h-4 w-4" />
-          <span>{error}</span>
-        </div>
-      )}
-    </div>
-  );
-
-  const PasswordField = ({ icon: Icon, error, show, onToggle, ...props }) => (
-    <div className="space-y-1">
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Icon className="h-5 w-5 text-gray-400" />
-        </div>
-        <input
-          type={show ? "text" : "password"}
-          className={`w-full pl-10 pr-12 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-            error 
-              ? 'border-red-300 bg-red-50' 
-              : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
-          }`}
-          {...props}
-        />
-        <button
-          type="button"
-          className="absolute inset-y-0 right-0 pr-3 flex items-center"
-          onClick={onToggle}
-        >
-          {show ? (
-            <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-          ) : (
-            <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
-          )}
-        </button>
-      </div>
-      {error && (
-        <div className="flex items-center space-x-1 text-red-600 text-sm">
-          <AlertCircle className="h-4 w-4" />
-          <span>{error}</span>
-        </div>
-      )}
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/signup" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
+            <a href="/signup" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
-            </Link>
+            </a>
           </div>
         </div>
       </div>
@@ -468,12 +465,12 @@ export default function SignupCandidate() {
                 <div className="text-sm text-gray-700">
                   <p className="mb-2">Bằng cách hoàn tất đăng ký, bạn đồng ý với:</p>
                   <div className="space-x-4">
-                    <Link to="/terms" className="text-orange-600 hover:text-orange-700 font-medium">
+                    <a href="/terms" className="text-orange-600 hover:text-orange-700 font-medium">
                       Điều khoản sử dụng
-                    </Link>
-                    <Link to="/privacy" className="text-orange-600 hover:text-orange-700 font-medium">
+                    </a>
+                    <a href="/privacy" className="text-orange-600 hover:text-orange-700 font-medium">
                       Chính sách bảo mật
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -484,9 +481,9 @@ export default function SignupCandidate() {
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
             <p className="text-gray-600">
               Đã có tài khoản?{" "}
-              <Link to="/login/candidate" className="text-orange-600 hover:text-orange-700 font-semibold">
+              <a href="/login/candidate" className="text-orange-600 hover:text-orange-700 font-semibold">
                 Đăng nhập ngay
-              </Link>
+              </a>
             </p>
           </div>
         </div>
