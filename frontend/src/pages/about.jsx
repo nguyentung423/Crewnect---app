@@ -122,7 +122,7 @@ const aboutData = {
       {
         name: "Võ Thành Nhân",
         position: "Finance Manager",
-        image: "/images/team/c.jpg",
+        image: "/n.png",
         bio: "Đại học Kinh Tế TP.HCM",
         skills: ["Financial Analysis", "Investment", "Strategy"],
         linkedin: "https://linkedin.com/in/thanhnhan",
