@@ -165,12 +165,6 @@ export default function SignupAgency() {
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
             </Link>
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-gray-900">Crewnect</span>
-            </div>
           </div>
         </div>
       </div>

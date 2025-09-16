@@ -144,12 +144,6 @@ export default function LoginAgency() {
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
             </Link>
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
-                <Calendar className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-bold text-gray-900">Crewnect</span>
-            </div>
           </div>
         </div>
       </div>
@@ -369,15 +363,6 @@ export default function LoginAgency() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="text-center text-gray-500 text-sm">
-            © 2024 EventHire. Nền tảng tuyển dụng hàng đầu trong ngành sự kiện.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

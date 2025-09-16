@@ -6,22 +6,7 @@ import { Link } from "react-router-dom";
 export default function Signup() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-center">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
-                <Calendar className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">Crewnect</h1>
-                <p className="text-sm text-gray-600">Nền tảng tuyển dụng ngành sự kiện</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-16">
@@ -167,15 +152,6 @@ export default function Signup() {
           </p>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-16">
-        <div className="max-w-6xl mx-auto px-4 py-8">
-          <div className="text-center text-gray-500 text-sm">
-            © 2024 EventHire. Nền tảng tuyển dụng hàng đầu trong ngành sự kiện.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
