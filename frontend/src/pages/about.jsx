@@ -104,10 +104,10 @@ const aboutData = {
       {
         name: "Nguyễn Kim Thư",
         position: "Brand Manager",
-        image: "/images/team/a.jpg",
+        image: "/th.png",
         bio: "Đại học Giáo Dục - ĐHQGHN",
         skills: ["Brand Strategy", "Digital Marketing", "UX/UI"],
-        linkedin: "https://linkedin.com/in/kimthu",
+        linkedin: "https://www.facebook.com/nguyen.thu.367533",
         status: "online"
       },
       {
