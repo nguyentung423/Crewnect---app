@@ -518,7 +518,7 @@ const AchievementsSection = ({ achievements }) => {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Thành tựu & <span className="bg-gradient-to-r from-orange-700 to-orange-600 bg-clip-text text-transparent">Chứng nhận</span>
           </h2>
-          <p className="text-xl text-gray-600">Được công nhận bởi các tổ chức uy tín quốc tế</p>
+          <p className="text-xl text-gray-600">Được công nhận bởi các tổ chức uy tín</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
