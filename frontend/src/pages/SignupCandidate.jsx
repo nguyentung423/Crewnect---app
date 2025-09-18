@@ -209,9 +209,10 @@ export default function SignupCandidate() {
         fullName: formData.fullName,
         phone: formData.phone
       });
-      nav("/dashboard/candidate");
+      nav("/candidate");
     } catch (err) {
-      setErrors({ email: 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
+      console.error('Signup error:', err);
+      setErrors({ email: err.message || 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
     } finally {
       setIsSubmitting(false);
     }

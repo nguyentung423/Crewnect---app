@@ -116,7 +116,7 @@ export default function LoginCandidate() {
         email: formData.email,
         password: formData.password,
       });
-      nav("/dashboard/candidate");
+      nav("/candidate");
     } catch (err) {
       setErrors({ email: err.message || "Sai email hoặc mật khẩu" });
     } finally {
