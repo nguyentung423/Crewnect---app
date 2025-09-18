@@ -147,7 +147,7 @@ export default function Hero() {
     className="group relative overflow-hidden rounded-2xl border-2 border-[#e0e0e0] bg-white/80 px-8 py-4 text-lg font-bold text-[#333333] backdrop-blur-md transition-all hover:border-[#536b4e] hover:scale-105 hover:bg-white hover:text-[#536b4e] hover:shadow-xl active:scale-95"
   >
     <span className="absolute inset-0 bg-gradient-to-r from-[#536b4e]/10 to-[#f0b33a]/10 opacity-0 transition-opacity group-hover:opacity-100" />
-    <span className="relative z-10">Đăng ký đối tác</span>
+    <span className="relative z-10">Tuyển dụng ngay</span>
   </Link>
 </div>
 
