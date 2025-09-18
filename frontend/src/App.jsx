@@ -22,7 +22,15 @@ import Jobs from "./pages/dashboard/Jobs";
 import Applications from "./pages/dashboard/Applications";
 import CompanyProfile from "./pages/dashboard/CompanyProfile";
 import Settings from "./pages/dashboard/Settings";
-import CreateJob from "./pages/dashboard/CreateJob"; // ✅ Đăng job mới
+import CreateJob from "./pages/dashboard/CreateJob";
+
+// Dashboard cho Candidate
+import CandidateDashboard from "./pages/candidate/CandidateDashboard";
+import CandidateOverview from "./pages/candidate/Overview";
+import CandidateJobs from "./pages/candidate/Jobs";
+import CandidateApplications from "./pages/candidate/Applications";
+import CandidateProfile from "./pages/candidate/Profile";
+import CandidateSettings from "./pages/candidate/Settings";
 
 const App = () => {
   return (
@@ -45,7 +53,7 @@ const App = () => {
           {/* Test Supabase */}
           <Route path="/test-supabase" element={<TestSupabase />} />
 
-          {/* ✅ Agency Dashboard (đã rút gọn URL) */}
+          {/* ✅ Agency Dashboard */}
           <Route path="/agency" element={<AgencyDashboard />}>
             <Route index element={<Overview />} />
             <Route path="jobs" element={<Jobs />} />
@@ -53,6 +61,15 @@ const App = () => {
             <Route path="applications" element={<Applications />} />
             <Route path="profile" element={<CompanyProfile />} />
             <Route path="settings" element={<Settings />} />
+          </Route>
+
+          {/* ✅ Candidate Dashboard */}
+          <Route path="/candidate" element={<CandidateDashboard />}>
+            <Route index element={<CandidateOverview />} />
+            <Route path="jobs" element={<CandidateJobs />} />
+            <Route path="applications" element={<CandidateApplications />} />
+            <Route path="profile" element={<CandidateProfile />} />
+            <Route path="settings" element={<CandidateSettings />} />
           </Route>
 
           {/* 404 */}

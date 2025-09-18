@@ -1,7 +1,6 @@
-// src/pages/LoginCandidate.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../lib/authApi";
+import { loginCandidate } from "../lib/authApi";
 
 import {
   Calendar,
@@ -113,21 +112,17 @@ export default function LoginCandidate() {
 
     setIsLoading(true);
     try {
-      const data = await login({
+      const data = await loginCandidate({
         email: formData.email,
         password: formData.password,
       });
-      console.log("Login success:", data);
-      alert("Đăng nhập thành công!");
-      // chuyển hướng tuỳ ý
-      // nav("/dashboard/candidate");
+      nav("/dashboard/candidate");
     } catch (err) {
-      console.error("Login error:", err.message);
-      setErrors({ email: "Sai email hoặc mật khẩu" });
+      setErrors({ email: err.message || "Sai email hoặc mật khẩu" });
     } finally {
       setIsLoading(false);
     }
-  }; // <= KẾT THÚC handleLogin  (đúng 1 lần đóng)
+  };
 
   // --- UI
   return (

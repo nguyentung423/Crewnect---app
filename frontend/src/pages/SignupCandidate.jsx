@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { Link, useNavigate } from "react-router-dom";
+import { signupCandidate } from "../lib/authApi.js";
 import { 
   Calendar, 
   User, 
@@ -125,6 +126,7 @@ export default function SignupCandidate() {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const nav = useNavigate();
 
   const experienceLevels = [
     'Mới bắt đầu (0-1 năm)',
@@ -190,23 +192,29 @@ export default function SignupCandidate() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
     if (currentStep === 1 && validateStep1()) {
       setCurrentStep(2);
     } else if (currentStep === 2 && validateStep2()) {
-      handleSubmit();
+      await handleSubmit();
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      const data = await signupCandidate({
+        email: formData.email,
+        password: formData.password,
+        fullName: formData.fullName,
+        phone: formData.phone
+      });
+      nav("/dashboard/candidate");
+    } catch (err) {
+      setErrors({ email: 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
+    } finally {
       setIsSubmitting(false);
-      alert('Đăng ký thành công!');
-    }, 2000);
+    }
   };
 
   return (
@@ -215,10 +223,10 @@ export default function SignupCandidate() {
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <a href="/signup" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
+            <Link to="/signup" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -465,12 +473,12 @@ export default function SignupCandidate() {
                 <div className="text-sm text-gray-700">
                   <p className="mb-2">Bằng cách hoàn tất đăng ký, bạn đồng ý với:</p>
                   <div className="space-x-4">
-                    <a href="/terms" className="text-orange-600 hover:text-orange-700 font-medium">
+                    <Link to="/terms" className="text-orange-600 hover:text-orange-700 font-medium">
                       Điều khoản sử dụng
-                    </a>
-                    <a href="/privacy" className="text-orange-600 hover:text-orange-700 font-medium">
+                    </Link>
+                    <Link to="/privacy" className="text-orange-600 hover:text-orange-700 font-medium">
                       Chính sách bảo mật
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -481,9 +489,9 @@ export default function SignupCandidate() {
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
             <p className="text-gray-600">
               Đã có tài khoản?{" "}
-              <a href="/login/candidate" className="text-orange-600 hover:text-orange-700 font-semibold">
+              <Link to="/login/candidate" className="text-orange-600 hover:text-orange-700 font-semibold">
                 Đăng nhập ngay
-              </a>
+              </Link>
             </p>
           </div>
         </div>

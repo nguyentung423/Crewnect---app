@@ -113,10 +113,10 @@ const aboutData = {
       {
         name: "Nguyễn Hoàng Bảo Nhật",
         position: "AI Engineer",
-        image: "/images/team/b.jpg",
+        image: "/nhat.png",
         bio: "Trường Đại học Văn Lang",
         skills: ["Machine Learning", "Deep Learning", "Python"],
-        linkedin: "https://linkedin.com/in/baonhat",
+        linkedin: "https://www.linkedin.com/in/chrisnguyenx05/",
         status: "online"
       },
       {

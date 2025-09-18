@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { loginAgency } from "../lib/authApi";
 
 import { 
   Calendar, 
@@ -81,6 +82,7 @@ const PasswordField = ({ icon: Icon, error, show, onToggle, ...props }) => (
 );
 
 export default function LoginAgency() {
+  const nav = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -121,17 +123,21 @@ export default function LoginAgency() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!validateForm()) return;
     
     setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Login submitted:', formData);
+    try {
+      const data = await loginAgency({
+        email: formData.email,
+        password: formData.password,
+      });
+      nav("/dashboard/agency");
+    } catch (err) {
+      setErrors({ email: err.message || "Sai email hoặc mật khẩu" });
+    } finally {
       setIsLoading(false);
-      alert('Đăng nhập thành công!');
-    }, 1500);
+    }
   };
 
   return (

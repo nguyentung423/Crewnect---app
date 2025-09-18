@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { signup } from "../lib/authApi";
+import { Link, useNavigate } from "react-router-dom";
+import { signupAgency } from "../lib/authApi";
 
 import { 
   Building2, 
@@ -17,8 +17,6 @@ import {
   MapPin,
   Globe
 } from "lucide-react";
-
-// Mock Link component for demonstration
 
 const InputField = ({ icon: Icon, error, type = "text", ...props }) => (
   <div className="space-y-1">
@@ -82,6 +80,7 @@ const PasswordField = ({ icon: Icon, error, show, onToggle, ...props }) => (
 );
 
 export default function SignupAgency() {
+  const nav = useNavigate();
   const [formData, setFormData] = useState({
     companyName: '',
     contactPerson: '',
@@ -144,17 +143,22 @@ export default function SignupAgency() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!validateForm()) return;
     
     setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      const data = await signupAgency({
+        email: formData.email,
+        password: formData.password,
+        companyName: formData.companyName
+      });
+      nav("/dashboard/agency");
+    } catch (err) {
+      setErrors({ email: 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
+    } finally {
       setIsSubmitting(false);
-      alert('Đăng ký thành công!');
-    }, 2000);
+    }
   };
 
   return (
@@ -298,7 +302,7 @@ export default function SignupAgency() {
               </div>
             </div>
 
-            {/* Security */}
+            
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
                 <Lock className="w-6 h-6 text-orange-600" />
@@ -330,7 +334,7 @@ export default function SignupAgency() {
               </div>
             </div>
 
-            {/* Terms */}
+            
             <div className="bg-gray-50 rounded-xl p-6">
               <div className="flex items-start space-x-3">
                 <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -348,7 +352,7 @@ export default function SignupAgency() {
               </div>
             </div>
 
-            {/* Submit Button */}
+            
             <button
               type="button"
               onClick={handleSubmit}
@@ -366,7 +370,7 @@ export default function SignupAgency() {
             </button>
           </div>
 
-          {/* Footer */}
+          
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
             <p className="text-gray-600">
               Đã có tài khoản?{" "}
@@ -377,7 +381,7 @@ export default function SignupAgency() {
           </div>
         </div>
 
-        {/* Benefits */}
+        
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-xl p-6 border border-gray-200 text-center">
             <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
