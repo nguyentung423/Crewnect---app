@@ -153,7 +153,7 @@ export default function SignupAgency() {
         password: formData.password,
         companyName: formData.companyName
       });
-      nav("/dashboard/agency");
+      nav("/agency");
     } catch (err) {
       setErrors({ email: 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
     } finally {

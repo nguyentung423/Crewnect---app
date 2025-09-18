@@ -7,12 +7,16 @@ export async function signupCandidate({ email, password, fullName, phone }) {
 
   const user = data.user;
   if (user) {
-    const { error: pErr } = await supabase.from("profiles").insert({
-      id: user.id,
-      role: "candidate",
-      full_name: fullName,
-      phone,
-    });
+    // Update profile sau khi Supabase đã tự insert
+    const { error: pErr } = await supabase
+      .from("profiles")
+      .update({
+        role: "candidate",
+        full_name: fullName,
+        phone,
+      })
+      .eq("id", user.id);
+
     if (pErr) throw pErr;
   }
   return data;
@@ -23,12 +27,13 @@ export async function loginCandidate({ email, password }) {
   if (error) throw error;
 
   const user = data.user;
-  const { data: profile } = await supabase
+  const { data: profile, error: pErr } = await supabase
     .from("profiles")
     .select("role")
     .eq("id", user.id)
     .single();
 
+  if (pErr) throw pErr;
   if (!profile || profile.role !== "candidate") {
     throw new Error("Tài khoản này không phải Candidate");
   }
@@ -42,16 +47,20 @@ export async function signupAgency({ email, password, companyName, contactPerson
 
   const user = data.user;
   if (user) {
-    const { error: pErr } = await supabase.from("profiles").insert({
-      id: user.id,
-      role: "agency",
-      company_name: companyName,
-      contact_person: contactPerson,
-      phone,
-      company_type: companyType,
-      website,
-      address
-    });
+    // Update profile sau khi Supabase đã tự insert
+    const { error: pErr } = await supabase
+      .from("profiles")
+      .update({
+        role: "agency",
+        company_name: companyName,
+        contact_person: contactPerson,
+        phone,
+        company_type: companyType,
+        company_website: website,
+        company_address: address,
+      })
+      .eq("id", user.id);
+
     if (pErr) throw pErr;
   }
   return data;
@@ -62,12 +71,13 @@ export async function loginAgency({ email, password }) {
   if (error) throw error;
 
   const user = data.user;
-  const { data: profile } = await supabase
+  const { data: profile, error: pErr } = await supabase
     .from("profiles")
     .select("role")
     .eq("id", user.id)
     .single();
 
+  if (pErr) throw pErr;
   if (!profile || profile.role !== "agency") {
     throw new Error("Tài khoản này không phải Agency");
   }

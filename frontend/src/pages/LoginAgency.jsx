@@ -132,7 +132,7 @@ export default function LoginAgency() {
         email: formData.email,
         password: formData.password,
       });
-      nav("/dashboard/agency");
+      nav("/agency");
     } catch (err) {
       setErrors({ email: err.message || "Sai email hoặc mật khẩu" });
     } finally {
