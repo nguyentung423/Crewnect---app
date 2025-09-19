@@ -20,9 +20,11 @@ import {
   Loader2,
 } from "lucide-react";
 import { getAgencyJobs, deleteJob, countApplications } from "../../lib/jobsApi";
-
+import { useSession } from '@supabase/auth-helpers-react';
 
 export default function Jobs() {
+  const session = useSession();
+  const agencyId = session?.user?.id; // Only use agencyId if session is valid
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("Tất cả");
@@ -31,9 +33,6 @@ export default function Jobs() {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   
-  // Mock agency_id (replace with actual authentication context)
-  const agencyId = "your-agency-id"; // TODO: Replace with actual agency ID from auth context
-
   const statusColors = {
     "Đang tuyển": "bg-emerald-100 text-emerald-700 border-emerald-200",
     "Chờ duyệt": "bg-amber-100 text-amber-700 border-amber-200",
@@ -47,33 +46,54 @@ export default function Jobs() {
     low: "border-l-green-500 bg-green-50/30",
   };
 
-  // Fetch jobs and their application counts
+  // Fetch jobs only if agencyId is valid
   useEffect(() => {
+    let isMounted = true;
+
     const fetchJobs = async () => {
+      if (!agencyId) {
+        setError("Không thể tải danh sách công việc. Vui lòng đăng nhập.");
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
         setError(null);
         
-        // Fetch agency jobs
         const jobsData = await getAgencyJobs(agencyId);
         
-        // Fetch application counts for each job
         const jobsWithCounts = await Promise.all(
           jobsData.map(async (job) => {
             const count = await countApplications(job.id);
-            return { ...job, applicants: count };
+            return { 
+              ...job, 
+              applicants: count || 0,
+              company_name: job.profiles?.agency_id?.company_name || "Unknown Company"
+            };
           })
         );
         
-        setJobs(jobsWithCounts);
+        if (isMounted) {
+          setJobs(jobsWithCounts);
+        }
       } catch (err) {
-        setError("Không thể tải danh sách công việc. Vui lòng thử lại.");
+        console.error("Error fetching jobs:", err.message);
+        if (isMounted) {
+          setError("Không thể tải danh sách công việc. Vui lòng thử lại.");
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchJobs();
+
+    return () => {
+      isMounted = false;
+    };
   }, [agencyId]);
 
   // Handle job deletion

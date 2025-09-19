@@ -3,7 +3,17 @@ import { supabase } from "../supabaseClient";
 /* ================== JOBS ================== */
 
 // 1. Agency đăng job mới
-export async function createJob({ title, description, location, salary, deadline, agency_id, requirements, urgency, featured }) {
+export async function createJob({ 
+  title, 
+  description, 
+  location, 
+  salary, 
+  deadline, 
+  agency_id, 
+  requirements, 
+  urgency, 
+  featured 
+}) {
   const { data, error } = await supabase
     .from("jobs")
     .insert([{ 
@@ -13,15 +23,18 @@ export async function createJob({ title, description, location, salary, deadline
       salary, 
       deadline, 
       agency_id,
-      requirements: requirements || [], // Ensure requirements is an array
-      urgency: urgency || 'low', // Default to 'low' if not provided
-      featured: featured || false, // Default to false if not provided
-      status: 'Chờ duyệt' // Default status
+      requirements: requirements || [], 
+      urgency: urgency || "low", 
+      featured: featured || false, 
+      status: "Chờ duyệt" 
     }])
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ createJob error:", error);
+    throw error;
+  }
   return data;
 }
 
@@ -29,49 +42,28 @@ export async function createJob({ title, description, location, salary, deadline
 export async function getAllJobs() {
   const { data, error } = await supabase
     .from("jobs")
-    .select(`
-      id, 
-      title, 
-      description, 
-      location, 
-      salary, 
-      deadline, 
-      created_at, 
-      status, 
-      requirements, 
-      urgency, 
-      featured,
-      profiles:agency_id (company_name, company_type, company_website)
-    `)
+    .select("*") // tạm thời lấy full cột, join sau
     .order("created_at", { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ getAllJobs error:", error);
+    throw error;
+  }
   return data;
 }
 
-// 3. Lấy jobs của Agency (dashboard Agency)
+// 3. Lấy jobs của 1 Agency (dashboard Agency)
 export async function getAgencyJobs(agencyId) {
   const { data, error } = await supabase
     .from("jobs")
-    .select(`
-      id, 
-      title, 
-      description, 
-      location, 
-      salary, 
-      deadline, 
-      created_at, 
-      status, 
-      requirements, 
-      urgency, 
-      featured,
-      profiles:agency_id (company_name),
-      applications(count)
-    `)
+    .select("*")
     .eq("agency_id", agencyId)
     .order("created_at", { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ getAgencyJobs error:", error);
+    throw error;
+  }
   return data;
 }
 
@@ -82,7 +74,10 @@ export async function deleteJob(jobId) {
     .delete()
     .eq("id", jobId);
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ deleteJob error:", error);
+    throw error;
+  }
   return true;
 }
 
@@ -93,7 +88,10 @@ export async function countApplications(jobId) {
     .select("*", { count: "exact", head: true })
     .eq("job_id", jobId);
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ countApplications error:", error);
+    throw error;
+  }
   return count;
 }
 
@@ -103,15 +101,18 @@ export async function updateJob(jobId, data) {
     .from("jobs")
     .update({
       ...data,
-      requirements: data.requirements || [], // Ensure requirements is an array
-      urgency: data.urgency || 'low', // Default to 'low' if not provided
-      featured: data.featured || false // Default to false if not provided
+      requirements: data.requirements || [], 
+      urgency: data.urgency || "low", 
+      featured: data.featured || false 
     })
     .eq("id", jobId)
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ updateJob error:", error);
+    throw error;
+  }
   return updatedData;
 }
 
@@ -121,11 +122,19 @@ export async function updateJob(jobId, data) {
 export async function applyJob({ job_id, candidate_id, cover_letter }) {
   const { data, error } = await supabase
     .from("applications")
-    .insert([{ job_id, candidate_id, cover_letter, status: "pending" }])
+    .insert([{ 
+      job_id, 
+      candidate_id, 
+      cover_letter, 
+      status: "pending" 
+    }])
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ applyJob error:", error);
+    throw error;
+  }
   return data;
 }
 
@@ -133,34 +142,29 @@ export async function applyJob({ job_id, candidate_id, cover_letter }) {
 export async function getJobApplications(jobId) {
   const { data, error } = await supabase
     .from("applications")
-    .select(`
-      id, 
-      status, 
-      created_at, 
-      cover_letter,
-      profiles:candidate_id (id, full_name, phone, skills, portfolio)
-    `)
+    .select("*") // để đơn giản, join profile sau
     .eq("job_id", jobId)
     .order("created_at", { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ getJobApplications error:", error);
+    throw error;
+  }
   return data;
 }
 
-// 9. Lấy danh sách đơn ứng tuyển của Candidate (dashboard Candidate)
+// 9. Lấy danh sách đơn ứng tuyển của Candidate
 export async function getCandidateApplications(candidateId) {
   const { data, error } = await supabase
     .from("applications")
-    .select(`
-      id, 
-      status, 
-      created_at,
-      jobs(id, title, location, salary, deadline, profiles:agency_id(company_name))
-    `)
+    .select("*")
     .eq("candidate_id", candidateId)
     .order("created_at", { ascending: false });
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ getCandidateApplications error:", error);
+    throw error;
+  }
   return data;
 }
 
@@ -173,6 +177,9 @@ export async function updateApplicationStatus(applicationId, status) {
     .select()
     .single();
 
-  if (error) throw error;
+  if (error) {
+    console.error("❌ updateApplicationStatus error:", error);
+    throw error;
+  }
   return data;
 }
