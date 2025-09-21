@@ -13,7 +13,7 @@ export default function Signup() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Chào mừng đến với Crewnect
+            Chào mừng đến với Cviro
           </h2>
           <p className="text-xl text-gray-600 mb-2">
             Kết nối tài năng và cơ hội trong ngành sự kiện
@@ -109,7 +109,7 @@ export default function Signup() {
         {/* Features Section */}
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Tại sao chọn Crewnect?
+            Tại sao chọn Cviro?
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">

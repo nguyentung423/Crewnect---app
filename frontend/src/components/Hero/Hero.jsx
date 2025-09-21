@@ -118,7 +118,7 @@ export default function Hero() {
             </div>
 
             <p className="max-w-2xl text-lg leading-relaxed text-[#333333]/75 sm:text-xl animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
-              Crewnect giúp bạn tìm ca làm, quản lý nhân sự, và kết nối đối tác trong vài phút.
+              Cviro giúp bạn tìm ca làm, quản lý nhân sự, và kết nối đối tác trong vài phút.
               <span className="block mt-2 font-semibold text-[#536b4e]">
                 
               </span>

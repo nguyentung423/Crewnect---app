@@ -13,7 +13,7 @@ const aboutData = {
     titleHighlight: "các agency uy tín",
     subtitle: "Nhanh chóng • Minh bạch • Hiệu quả",
     description:
-      "Crewnect là nền tảng tuyển dụng chuyên biệt cho ngành Event, nơi PG, PB, MC, Sup và nhân sự sự kiện dễ dàng kết nối với hàng trăm agency hàng đầu – nhanh gọn, rõ ràng và đáng tin cậy.",
+      "Cviro là nền tảng tuyển dụng chuyên biệt cho ngành Event, nơi PG, PB, MC, Sup và nhân sự sự kiện dễ dàng kết nối với hàng trăm agency hàng đầu – nhanh gọn, rõ ràng và đáng tin cậy.",
     videoUrl: "/videos/hero-video.mp4",
     achievements: ["Kết nối 5,000+ job", "Hơn 300 agency", "12,000+ ứng viên"]
   },
@@ -35,7 +35,7 @@ const aboutData = {
     mainTitle: "Kết nối nhân sự,",
     mainTitleHighlight: "nâng tầm sự kiện",
     description:
-      "Mỗi sự kiện đều cần nhân sự phù hợp. Crewnect giúp agency tìm đúng người – đúng việc, đồng thời tạo ra cơ hội việc làm minh bạch, an toàn cho ứng viên.",
+      "Mỗi sự kiện đều cần nhân sự phù hợp. Cviro giúp agency tìm đúng người – đúng việc, đồng thời tạo ra cơ hội việc làm minh bạch, an toàn cho ứng viên.",
     quote:
       "Sứ mệnh của chúng tôi là trở thành cầu nối tin cậy, phát triển cộng đồng nhân sự sự kiện chuyên nghiệp tại Việt Nam và vươn tầm khu vực.",
     founder: {
@@ -97,9 +97,9 @@ const aboutData = {
   team: {
     title: "Đội ngũ",
     mainTitle: "Trải nghiệm chuyên nghiệp cùng",
-    mainTitleHighlight: "đội ngũ Crewnect",
+    mainTitleHighlight: "đội ngũ Cviro",
     description:
-      "Crewnect được xây dựng bởi những người trẻ am hiểu ngành Event & Công nghệ. Chúng tôi luôn sẵn sàng đồng hành để mang lại trải nghiệm tuyển dụng tốt nhất.",
+      "Cviro được xây dựng bởi những người trẻ am hiểu ngành Event & Công nghệ. Chúng tôi luôn sẵn sàng đồng hành để mang lại trải nghiệm tuyển dụng tốt nhất.",
     members: [
       {
         name: "Nguyễn Kim Thư",
@@ -134,7 +134,7 @@ const aboutData = {
   testimonials: [
     {
       quote:
-        "Crewnect đã giúp chúng tôi tuyển dụng PG/PB nhanh chóng, minh bạch và cực kỳ tiện lợi.",
+        "Cviro đã giúp chúng tôi tuyển dụng PG/PB nhanh chóng, minh bạch và cực kỳ tiện lợi.",
       author: "Nguyễn Thắng",
       position: "Event Director, Shine Invest",
       avatar: "/images/testimonial-1.jpg",
@@ -143,7 +143,7 @@ const aboutData = {
     },
     {
       quote:
-        "Nhờ Crewnect, chúng tôi tìm được đúng nhân sự cho các activation lớn chỉ trong vài phút.",
+        "Nhờ Cviro, chúng tôi tìm được đúng nhân sự cho các activation lớn chỉ trong vài phút.",
       author: "Tố Nguyên",
       position: "CEO, Premium Productions",
       avatar: "/images/testimonial-2.jpg",

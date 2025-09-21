@@ -227,7 +227,7 @@ export default function LoginAgency() {
                 </div>
                 <div>
                   <p className="text-gray-700 mb-3 italic">
-                    "Crewnect giúp chúng tôi tìm được những ứng viên chất lượng cao cho các dự án lớn. 
+                    "Cviro giúp chúng tôi tìm được những ứng viên chất lượng cao cho các dự án lớn. 
                     Quy trình đơn giản và hiệu quả."
                   </p>
                   <div>

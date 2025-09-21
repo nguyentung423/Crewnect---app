@@ -94,7 +94,7 @@ export default function Roles() {
             Các vai trò nhân sự
           </h2>
           <p className="text-lg text-[#666666] max-w-2xl mx-auto leading-relaxed">
-            CREWNEXT hỗ trợ đa dạng vị trí, phù hợp cho mọi sự kiện và nhu cầu tuyển dụng của doanh nghiệp
+            Cviro hỗ trợ đa dạng vị trí, phù hợp cho mọi sự kiện và nhu cầu tuyển dụng của doanh nghiệp
           </p>
 
           {/* Stats overview */}

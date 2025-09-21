@@ -6,7 +6,7 @@ const pgStories = [
     id: 1,
     name: "Ngọc Anh",
     role: "PG tại Tech Expo",
-    feedback: "CREWNEXT giúp mình tìm ca làm chỉ trong vài phút. Thanh toán nhanh chóng và cực kỳ minh bạch.",
+    feedback: "Cviro giúp mình tìm ca làm chỉ trong vài phút. Thanh toán nhanh chóng và cực kỳ minh bạch.",
     image: "https://via.placeholder.com/80x80/ab3f20/FFFFFF?text=NA",
     rating: 5,
     location: "TP.HCM",
@@ -59,7 +59,7 @@ const clientStories = [
     id: 3,
     name: "Đức Thành",
     role: "Marketing Director - Expo Agency",
-    feedback: "CREWNEXT đã thay đổi cách chúng tôi tuyển dụng. Tiết kiệm 70% thời gian và chi phí so với trước đây.",
+    feedback: "Cviro đã thay đổi cách chúng tôi tuyển dụng. Tiết kiệm 70% thời gian và chi phí so với trước đây.",
     image: "https://via.placeholder.com/80x80/536b4e/FFFFFF?text=DT",
     rating: 5,
     company: "Expo Agency",
@@ -157,7 +157,7 @@ export default function SuccessStories() {
             Câu chuyện <span className="text-[#ab3f20]">thành công</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Trải nghiệm thực tế từ nhân sự và đối tác đã đồng hành cùng CREWNEXT
+            Trải nghiệm thực tế từ nhân sự và đối tác đã đồng hành cùng Cviro
           </p>
         </div>
 

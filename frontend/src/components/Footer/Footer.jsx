@@ -204,7 +204,7 @@ export default function Footer() {
                 <div>
                   <p className="text-white/90 font-medium">Email</p>
                   <a href="mailto:support@crewnext.com" className="text-white/70 hover:text-[#f0b33a] transition-colors duration-300">
-                    support@crewnext.com
+                    support@cviro.com
                   </a>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <div className="text-white/60 text-sm text-center md:text-right">
-              <p>© {new Date().getFullYear()} Crewnect. All rights reserved.</p>
+              <p>© {new Date().getFullYear()} Cviro. All rights reserved.</p>
               <p className="text-xs mt-1">Made with ❤️ in Vietnam</p>
             </div>
           </div>

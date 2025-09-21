@@ -242,7 +242,7 @@ export default function SignupCandidate() {
             Tạo hồ sơ ứng viên
           </h1>
           <p className="text-lg text-gray-600 mb-2">
-            Gia nhập Crewnect để khám phá cơ hội nghề nghiệp trong ngành sự kiện
+            Gia nhập Cviro để khám phá cơ hội nghề nghiệp trong ngành sự kiện
           </p>
           <p className="text-gray-500">
             Hoàn toàn miễn phí và chỉ mất vài phút

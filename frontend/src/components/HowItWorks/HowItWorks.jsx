@@ -67,7 +67,7 @@ const agencySteps = [
     title: "Đăng ký doanh nghiệp",
     shortTitle: "Đăng ký",
     description: "Tạo tài khoản doanh nghiệp và xác thực thông tin pháp lý của công ty.",
-    detailedDescription: "Đăng ký với thông tin doanh nghiệp, upload giấy phép kinh doanh và các giấy tờ pháp lý. Team Crewnect sẽ xác minh trong 24h.",
+    detailedDescription: "Đăng ký với thông tin doanh nghiệp, upload giấy phép kinh doanh và các giấy tờ pháp lý. Team Cviro sẽ xác minh trong 24h.",
     icon: <Building2 className="h-6 w-6" />,
     color: "#ab3f20",
     gradient: "from-[#ab3f20] to-[#8b2f15]",
@@ -178,7 +178,7 @@ export default function HowItWorks() {
             <Zap className="h-8 w-8" />
           </div>
           <h2 className="text-4xl font-bold text-[#1a1a1a] mb-3">
-            Cách Crewnect hoạt động
+            Cách Cviro hoạt động
           </h2>
           <p className="text-lg text-[#666666] max-w-2xl mx-auto leading-relaxed mb-8">
             Quy trình được tối ưu riêng biệt cho từng đối tượng sử dụng, đảm bảo trải nghiệm tốt nhất
@@ -392,8 +392,8 @@ export default function HowItWorks() {
               </h3>
               <p className="text-white/90 mb-6">
                 {viewType === "staff" 
-                  ? "Tham gia Crewnect ngay hôm nay và khám phá hàng nghìn cơ hội việc làm hấp dẫn trong ngành sự kiện."
-                  : "Đăng ký Crewnect để tiếp cận nguồn nhân lực chất lượng cao và quản lý sự kiện một cách chuyên nghiệp."
+                  ? "Tham gia Cviro ngay hôm nay và khám phá hàng nghìn cơ hội việc làm hấp dẫn trong ngành sự kiện."
+                  : "Đăng ký Cviro để tiếp cận nguồn nhân lực chất lượng cao và quản lý sự kiện một cách chuyên nghiệp."
                 }
               </p>
             </div>
