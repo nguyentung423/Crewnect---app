@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   ChevronDown, Users, Target, Heart, Lightbulb, Rocket, HandHeart, Sprout,
@@ -105,13 +104,13 @@ const aboutData = {
         name: "Nguyễn Kim Thư",
         position: "Brand Manager",
         image: "/th.png",
-        bio: " Trường Đại học Giáo Dục - ĐHQGHN",
+        bio: "Trường Đại học Giáo Dục - ĐHQGHN",
         skills: ["Brand Strategy", "Digital Marketing", "UX/UI"],
         linkedin: "https://www.facebook.com/nguyen.thu.367533",
         status: "online"
       },
       {
-        name: "Nguyễn Hoàng Bảo Nhật",
+        name: " Bảo Nhật",
         position: "AI Engineer",
         image: "/nhat.png",
         bio: "Trường Đại học Văn Lang",
@@ -126,7 +125,16 @@ const aboutData = {
         bio: "Đại học Kinh Tế TP.HCM",
         skills: ["Financial Analysis", "Investment", "Strategy"],
         linkedin: "https://www.facebook.com/profile.php?id=100041105261085&mibextid=ZbWKwL",
-        status: "away"
+        status: "online"
+      },
+      {
+        name: "Hà Hải Yến",
+        position: "BD Manager",
+        image: "/khang.png",
+        bio: "Đại học Kinh Tế Quốc Dân",
+        skills: ["Business Strategy", "Partnership", "Market Analysis"],
+        linkedin: "https://www.facebook.com/hai.yen.206178/",
+        status: "online"
       },
     ],
   },
@@ -243,8 +251,6 @@ const useCursorTracker = () => {
 };
 
 // Advanced Components
-
-
 const FloatingElements = () => (
   <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
     {[...Array(20)].map((_, i) => (
@@ -427,9 +433,6 @@ const HeroSection = ({ hero }) => {
               Xem demo
             </button>
           </div>
-
-          {/* Scroll Indicator */}
-          
         </div>
       </div>
     </>
@@ -834,25 +837,25 @@ const PremiumTeamSection = ({ team }) => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 xl:gap-10 items-start">
           {team.members.map((member, index) => (
             <div 
               key={index}
-              className={`group relative transform transition-all duration-700 hover:scale-105 ${
+              className={`group relative transform transition-all duration-700 hover:scale-105 h-full ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500">
+              <div className="relative overflow-hidden rounded-3xl bg-white shadow-xl hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
                 {/* Member Image */}
-                <div className="relative h-80 overflow-hidden">
+                <div className="relative h-72 xl:h-80 overflow-hidden flex-shrink-0">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-orange-600 to-green-600 flex items-center justify-center text-white text-8xl font-bold">${member.name.charAt(0)}</div>`;
+                      e.target.parentElement.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-orange-600 to-green-600 flex items-center justify-center text-white text-6xl font-bold">${member.name.charAt(0)}</div>`;
                     }}
                   />
                   
@@ -865,15 +868,15 @@ const PremiumTeamSection = ({ team }) => {
                   {/* Overlay on Hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <div className="absolute bottom-4 left-4 right-4">
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {member.skills.map((skill, skillIndex) => (
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {member.skills.slice(0, 2).map((skill, skillIndex) => (
                           <span key={skillIndex} className="px-2 py-1 bg-white/20 backdrop-blur-sm text-white text-xs font-medium rounded-full">
                             {skill}
                           </span>
                         ))}
                       </div>
-                      <a href={member.linkedin} className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm text-white font-medium rounded-full hover:bg-white/30 transition-colors">
-                        <Globe className="w-4 h-4" />
+                      <a href={member.linkedin} className="inline-flex items-center gap-2 px-3 py-2 bg-white/20 backdrop-blur-sm text-white font-medium text-sm rounded-full hover:bg-white/30 transition-colors">
+                        <Globe className="w-3 h-3" />
                         Connect
                       </a>
                     </div>
@@ -881,18 +884,18 @@ const PremiumTeamSection = ({ team }) => {
                 </div>
                 
                 {/* Member Info */}
-                <div className="p-8">
-                  <h4 className="text-2xl font-bold text-gray-900 mb-2">{member.name}</h4>
+                <div className="p-6 xl:p-7 flex-grow flex flex-col">
+                  <h4 className="text-xl xl:text-2xl font-bold text-gray-900 mb-2">{member.name}</h4>
                   <p className="text-lg font-semibold text-orange-700 mb-3">{member.position}</p>
-                  <p className="text-gray-600 leading-relaxed">{member.bio}</p>
+                  <p className="text-gray-600 leading-relaxed text-sm flex-grow">{member.bio}</p>
                   
                   {/* Interaction Button */}
                   <button 
                     onClick={() => setSelectedMember(selectedMember === index ? null : index)}
-                    className="mt-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-medium rounded-xl hover:shadow-lg transition-all duration-300"
+                    className="mt-6 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-orange-700 text-white font-medium text-sm rounded-xl hover:shadow-lg transition-all duration-300 w-full justify-center"
                   >
                     <Eye className="w-4 h-4" />
-                    {selectedMember === index ? 'Hide Details' : 'View Details'}
+                    {selectedMember === index ? 'Ẩn' : 'Xem thêm'}
                   </button>
                   
                   {/* Expanded Details */}
@@ -900,10 +903,10 @@ const PremiumTeamSection = ({ team }) => {
                     selectedMember === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
                   }`}>
                     <div className="p-4 bg-stone-50 rounded-xl">
-                      <h5 className="font-semibold text-gray-900 mb-2">Core Skills:</h5>
-                      <div className="flex flex-wrap gap-2">
+                      <h5 className="font-semibold text-gray-900 mb-2 text-sm">Kỹ năng chính:</h5>
+                      <div className="flex flex-wrap gap-1">
                         {member.skills.map((skill, skillIndex) => (
-                          <span key={skillIndex} className="px-3 py-1 bg-orange-100 text-orange-800 text-sm font-medium rounded-lg">
+                          <span key={skillIndex} className="px-2 py-1 bg-orange-100 text-orange-800 text-xs font-medium rounded-lg">
                             {skill}
                           </span>
                         ))}
@@ -913,7 +916,7 @@ const PremiumTeamSection = ({ team }) => {
                 </div>
                 
                 {/* Corner Accent */}
-                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-orange-600 to-transparent opacity-20"></div>
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-orange-600 to-transparent opacity-20"></div>
               </div>
             </div>
           ))}
@@ -963,10 +966,11 @@ export default function AboutPage() {
     
     // Preload critical images
     const criticalImages = [
-      '/images/founder.jpg',
-      '/th.jpg', 
-      '/images/team/b.jpg',
-      '/images/team/c.jpg'
+      '/t.jpg',
+      '/th.png', 
+      '/nhat.png',
+      '/n.png',
+      '/khang.png'
     ];
     
     criticalImages.forEach(src => {
