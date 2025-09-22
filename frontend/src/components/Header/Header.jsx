@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoMenuSharp, IoClose } from "react-icons/io5";
-import navLogo from "../../assets/logo.svg"; // ✅ đường dẫn chuẩn
+import navLogo from "../../assets/logo.png"; // ✅ đường dẫn logo
 
-// ✅ Đã xoá "Đăng ký nhân sự" và "Liên hệ", thêm "About Us"
+// ✅ Menu navigation
 const navLinks = [
   { name: "Trang chủ", path: "/" },
-  { name: "Tìm việc", path: "/jobs" },
+  { name: "Blog", path: "/blog" },        // ✅ Đổi từ Tìm việc → Blog
   { name: "Về chúng tôi", path: "/about" },
 ];
 

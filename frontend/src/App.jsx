@@ -4,6 +4,7 @@ import Layout from "./layout/Layout";
 // Trang chính
 import Home from "./pages/Home";
 import About from "./pages/about";
+import Blog from "./pages/Blog";   // ✅ thêm Blog
 
 // Signup & Login
 import Signup from "./pages/Signup";
@@ -40,6 +41,7 @@ const App = () => {
           {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />   {/* ✅ Blog mới */}
 
           {/* Signup */}
           <Route path="/signup" element={<Signup />} />
