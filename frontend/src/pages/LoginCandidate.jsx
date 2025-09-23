@@ -132,7 +132,7 @@ export default function LoginCandidate() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link
-              to="/signup"
+              to="/"
               className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />

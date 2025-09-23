@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { signupCandidate } from "../lib/authApi.js";
 import { 
-  Calendar, 
   User, 
   Mail, 
   Phone, 
@@ -15,12 +12,9 @@ import {
   Users,
   Star,
   Briefcase,
-  MapPin,
-  GraduationCap,
-  Award,
-  Upload,
-  FileText
+  MapPin
 } from "lucide-react";
+import { Link } from "react-router-dom";   // ✅ Thêm import Link
 
 const InputField = ({ icon: Icon, error, type = "text", ...props }) => (
   <div className="space-y-1">
@@ -31,30 +25,6 @@ const InputField = ({ icon: Icon, error, type = "text", ...props }) => (
       <input
         type={type}
         className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-          error 
-            ? 'border-red-300 bg-red-50' 
-            : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
-        }`}
-        {...props}
-      />
-    </div>
-    {error && (
-      <div className="flex items-center space-x-1 text-red-600 text-sm">
-        <AlertCircle className="h-4 w-4" />
-        <span>{error}</span>
-      </div>
-    )}
-  </div>
-);
-
-const TextareaField = ({ icon: Icon, error, ...props }) => (
-  <div className="space-y-1">
-    <div className="relative">
-      <div className="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
-        <Icon className="h-5 w-5 text-gray-400" />
-      </div>
-      <textarea
-        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 min-h-[100px] resize-vertical ${
           error 
             ? 'border-red-300 bg-red-50' 
             : 'border-gray-200 bg-white hover:border-gray-300 focus:bg-white'
@@ -114,52 +84,24 @@ export default function SignupCandidate() {
     phone: '',
     password: '',
     confirmPassword: '',
-    location: '',
-    experience: '',
-    skills: '',
-    portfolio: '',
-    bio: ''
+    location: ''
   });
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [currentStep, setCurrentStep] = useState(1);
-  const nav = useNavigate();
-
-  const experienceLevels = [
-    'Mới bắt đầu (0-1 năm)',
-    'Có kinh nghiệm (1-3 năm)',
-    'Chuyên nghiệp (3-5 năm)', 
-    'Chuyên gia (5-10 năm)',
-    'Cấp cao (10+ năm)'
-  ];
-
-  const skillCategories = [
-    'Event Planning & Coordination',
-    'Technical Production',
-    'Marketing & Communications',
-    'Venue Management',
-    'Catering & Hospitality',
-    'Audio/Visual Production',
-    'Photography & Videography',
-    'Stage Design & Setup',
-    'Security & Logistics',
-    'Customer Service'
-  ];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
-  const validateStep1 = () => {
+  const validateForm = () => {
     const newErrors = {};
     
     if (!formData.fullName.trim()) newErrors.fullName = 'Họ và tên là bắt buộc';
@@ -182,34 +124,23 @@ export default function SignupCandidate() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const validateStep2 = () => {
-    const newErrors = {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
     
-    if (!formData.experience) newErrors.experience = 'Kinh nghiệm là bắt buộc';
-    if (!formData.skills.trim()) newErrors.skills = 'Kỹ năng là bắt buộc';
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleNextStep = async () => {
-    if (currentStep === 1 && validateStep1()) {
-      setCurrentStep(2);
-    } else if (currentStep === 2 && validateStep2()) {
-      await handleSubmit();
-    }
-  };
-
-  const handleSubmit = async () => {
     setIsSubmitting(true);
     try {
-      const data = await signupCandidate({
-        email: formData.email,
-        password: formData.password,
-        fullName: formData.fullName,
-        phone: formData.phone
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      alert('Đăng ký thành công!');
+      
+      setFormData({
+        fullName: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: '',
+        location: ''
       });
-      nav("/candidate");
     } catch (err) {
       console.error('Signup error:', err);
       setErrors({ email: err.message || 'Đăng ký thất bại, vui lòng kiểm tra lại thông tin' });
@@ -224,7 +155,11 @@ export default function SignupCandidate() {
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/signup" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
+            {/* ✅ Sửa button thành Link */}
+            <Link 
+              to="/signup"
+              className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors"
+            >
               <ArrowLeft className="w-5 h-5" />
               <span>Quay lại</span>
             </Link>
@@ -249,242 +184,126 @@ export default function SignupCandidate() {
           </p>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-gray-700">
-              Bước {currentStep} / 2
-            </span>
-            <span className="text-sm text-gray-500">
-              {currentStep === 1 ? 'Thông tin cơ bản' : 'Kinh nghiệm & Kỹ năng'}
-            </span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div 
-              className="bg-orange-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(currentStep / 2) * 100}%` }}
-            ></div>
-          </div>
-        </div>
-
         {/* Form */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
-          {currentStep === 1 ? (
-            <div className="space-y-6">
-              {/* Personal Information */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
-                  <User className="w-6 h-6 text-orange-600" />
-                  <span>Thông tin cá nhân</span>
-                </h3>
-                
-                <div className="space-y-4">
-                  <InputField
-                    icon={User}
-                    name="fullName"
-                    placeholder="Họ và tên đầy đủ *"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    error={errors.fullName}
-                  />
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <InputField
-                      icon={Mail}
-                      name="email"
-                      type="email"
-                      placeholder="Email của bạn *"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      error={errors.email}
-                    />
-                    
-                    <InputField
-                      icon={Phone}
-                      name="phone"
-                      type="tel"
-                      placeholder="Số điện thoại *"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      error={errors.phone}
-                    />
-                  </div>
-
-                  <InputField
-                    icon={MapPin}
-                    name="location"
-                    placeholder="Thành phố bạn đang sống"
-                    value={formData.location}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </div>
-
-              {/* Security */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
-                  <Lock className="w-6 h-6 text-orange-600" />
-                  <span>Mật khẩu</span>
-                </h3>
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8">
+          <div className="space-y-6">
+            {/* Personal Information */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
+                <User className="w-6 h-6 text-orange-600" />
+                <span>Thông tin cá nhân</span>
+              </h3>
+              
+              <div className="space-y-4">
+                <InputField
+                  icon={User}
+                  name="fullName"
+                  placeholder="Họ và tên đầy đủ *"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  error={errors.fullName}
+                />
                 
                 <div className="grid md:grid-cols-2 gap-4">
-                  <PasswordField
-                    icon={Lock}
-                    name="password"
-                    placeholder="Mật khẩu *"
-                    value={formData.password}
+                  <InputField
+                    icon={Mail}
+                    name="email"
+                    type="email"
+                    placeholder="Email của bạn *"
+                    value={formData.email}
                     onChange={handleInputChange}
-                    error={errors.password}
-                    show={showPassword}
-                    onToggle={() => setShowPassword(!showPassword)}
+                    error={errors.email}
                   />
                   
-                  <PasswordField
-                    icon={Lock}
-                    name="confirmPassword"
-                    placeholder="Xác nhận mật khẩu *"
-                    value={formData.confirmPassword}
-                    onChange={handleInputChange}
-                    error={errors.confirmPassword}
-                    show={showConfirmPassword}
-                    onToggle={() => setShowConfirmPassword(!showConfirmPassword)}
-                  />
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {/* Experience */}
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
-                  <GraduationCap className="w-6 h-6 text-orange-600" />
-                  <span>Kinh nghiệm & Kỹ năng</span>
-                </h3>
-                
-                <div className="space-y-4">
-                  <div className="space-y-1">
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Award className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <select
-                        name="experience"
-                        value={formData.experience}
-                        onChange={handleInputChange}
-                        className={`w-full pl-10 pr-4 py-3 border-2 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 ${
-                          errors.experience 
-                            ? 'border-red-300 bg-red-50' 
-                            : 'border-gray-200 bg-white hover:border-gray-300'
-                        }`}
-                      >
-                        <option value="">Chọn mức độ kinh nghiệm *</option>
-                        {experienceLevels.map((level) => (
-                          <option key={level} value={level}>{level}</option>
-                        ))}
-                      </select>
-                    </div>
-                    {errors.experience && (
-                      <div className="flex items-center space-x-1 text-red-600 text-sm">
-                        <AlertCircle className="h-4 w-4" />
-                        <span>{errors.experience}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  <TextareaField
-                    icon={Star}
-                    name="skills"
-                    placeholder="Mô tả kỹ năng và chuyên môn của bạn trong ngành sự kiện *"
-                    value={formData.skills}
-                    onChange={handleInputChange}
-                    error={errors.skills}
-                    rows={4}
-                  />
-
                   <InputField
-                    icon={FileText}
-                    name="portfolio"
-                    placeholder="Link portfolio/website cá nhân (nếu có)"
-                    value={formData.portfolio}
+                    icon={Phone}
+                    name="phone"
+                    type="tel"
+                    placeholder="Số điện thoại *"
+                    value={formData.phone}
                     onChange={handleInputChange}
-                  />
-
-                  <TextareaField
-                    icon={User}
-                    name="bio"
-                    placeholder="Giới thiệu ngắn về bản thân và mục tiêu nghề nghiệp"
-                    value={formData.bio}
-                    onChange={handleInputChange}
-                    rows={3}
+                    error={errors.phone}
                   />
                 </div>
-              </div>
 
-              {/* Skills Categories */}
-              <div className="bg-gray-50 rounded-xl p-6">
-                <h4 className="font-semibold text-gray-900 mb-4">Lĩnh vực chuyên môn phổ biến:</h4>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  {skillCategories.map((skill) => (
-                    <div key={skill} className="flex items-center space-x-2 text-gray-600">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span>{skill}</span>
-                    </div>
-                  ))}
-                </div>
+                <InputField
+                  icon={MapPin}
+                  name="location"
+                  placeholder="Thành phố bạn đang sống"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
-          )}
 
-          {/* Navigation Buttons */}
-          <div className="flex justify-between items-center mt-8 pt-8 border-t border-gray-200">
-            {currentStep > 1 && (
-              <button
-                type="button"
-                onClick={() => setCurrentStep(1)}
-                className="px-6 py-3 text-gray-600 hover:text-gray-800 font-medium transition-colors"
-              >
-                ← Quay lại
-              </button>
-            )}
-            
+            {/* Security */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center space-x-2">
+                <Lock className="w-6 h-6 text-orange-600" />
+                <span>Mật khẩu</span>
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-4">
+                <PasswordField
+                  icon={Lock}
+                  name="password"
+                  placeholder="Mật khẩu *"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  error={errors.password}
+                  show={showPassword}
+                  onToggle={() => setShowPassword(!showPassword)}
+                />
+                
+                <PasswordField
+                  icon={Lock}
+                  name="confirmPassword"
+                  placeholder="Xác nhận mật khẩu *"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  error={errors.confirmPassword}
+                  show={showConfirmPassword}
+                  onToggle={() => setShowConfirmPassword(!showConfirmPassword)}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit Button */}
+          <div className="mt-8 pt-8 border-t border-gray-200">
             <button
-              type="button"
-              onClick={handleNextStep}
+              type="submit"
               disabled={isSubmitting}
-              className="ml-auto bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-orange-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
               {isSubmitting ? (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Đang tạo tài khoản...</span>
                 </div>
-              ) : currentStep === 1 ? (
-                'Tiếp theo →'
               ) : (
-                'Hoàn tất đăng ký'
+                'Tạo tài khoản'
               )}
             </button>
           </div>
 
           {/* Terms */}
-          {currentStep === 2 && (
-            <div className="bg-gray-50 rounded-xl p-6 mt-6">
-              <div className="flex items-start space-x-3">
-                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-gray-700">
-                  <p className="mb-2">Bằng cách hoàn tất đăng ký, bạn đồng ý với:</p>
-                  <div className="space-x-4">
-                    <Link to="/terms" className="text-orange-600 hover:text-orange-700 font-medium">
-                      Điều khoản sử dụng
-                    </Link>
-                    <Link to="/privacy" className="text-orange-600 hover:text-orange-700 font-medium">
-                      Chính sách bảo mật
-                    </Link>
-                  </div>
+          <div className="bg-gray-50 rounded-xl p-6 mt-6">
+            <div className="flex items-start space-x-3">
+              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <div className="text-sm text-gray-700">
+                <p className="mb-2">Bằng cách tạo tài khoản, bạn đồng ý với:</p>
+                <div className="space-x-4">
+                  <button className="text-orange-600 hover:text-orange-700 font-medium">
+                    Điều khoản sử dụng
+                  </button>
+                  <button className="text-orange-600 hover:text-orange-700 font-medium">
+                    Chính sách bảo mật
+                  </button>
                 </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* Login Link */}
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
@@ -495,7 +314,7 @@ export default function SignupCandidate() {
               </Link>
             </p>
           </div>
-        </div>
+        </form>
 
         {/* Benefits */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">

@@ -374,7 +374,7 @@ export default function SignupAgency() {
           <div className="text-center mt-8 pt-8 border-t border-gray-200">
             <p className="text-gray-600">
               Đã có tài khoản?{" "}
-              <Link to="/login" className="text-orange-600 hover:text-orange-700 font-semibold">
+              <Link to="/login/agency" className="text-orange-600 hover:text-orange-700 font-semibold">
                 Đăng nhập ngay
               </Link>
             </p>

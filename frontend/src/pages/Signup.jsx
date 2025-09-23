@@ -146,7 +146,7 @@ export default function Signup() {
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">
             Đã có tài khoản?{" "}
-            <Link to="/login" className="text-orange-600 hover:text-orange-700 font-semibold">
+            <Link to="/" className="text-orange-600 hover:text-orange-700 font-semibold">
               Đăng nhập ngay
             </Link>
           </p>

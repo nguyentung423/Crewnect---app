@@ -222,10 +222,10 @@ export default function Hero() {
                         <span className="text-xs text-[#333333]/60">
                           {hotShifts[currentShift].location}, {hotShifts[currentShift].date}
                         </span>
-                        <button className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#ab3f20] to-[#ab3f20]/90 px-4 py-2 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95">
+                        <Link to="/login/candidate" className="group relative overflow-hidden rounded-xl bg-gradient-to-r from-[#ab3f20] to-[#ab3f20]/90 px-4 py-2 text-sm font-bold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl active:scale-95">
                           <span className="absolute inset-0 bg-white/20 opacity-0 transition-opacity group-hover:opacity-100" />
                           <span className="relative">Ứng tuyển</span>
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
