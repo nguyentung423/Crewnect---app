@@ -1,33 +1,35 @@
-import { supabase } from "../supabaseClient";
+import { supabase } from "./supabaseClient";
 
 /* ================== JOBS ================== */
 
 // 1. Agency đăng job mới
-export async function createJob({ 
-  title, 
-  description, 
-  location, 
-  salary, 
-  deadline, 
-  agency_id, 
-  requirements, 
-  urgency, 
-  featured 
+export async function createJob({
+  title,
+  description,
+  location,
+  salary,
+  deadline,
+  agency_id,
+  requirements,
+  urgency,
+  featured,
 }) {
   const { data, error } = await supabase
     .from("jobs")
-    .insert([{ 
-      title, 
-      description, 
-      location, 
-      salary, 
-      deadline, 
-      agency_id,
-      requirements: requirements || [], 
-      urgency: urgency || "low", 
-      featured: featured || false, 
-      status: "Chờ duyệt" 
-    }])
+    .insert([
+      {
+        title,
+        description,
+        location,
+        salary,
+        deadline,
+        agency_id,
+        requirements: requirements || [],
+        urgency: urgency || "low",
+        featured: featured || false,
+        status: "Chờ duyệt",
+      },
+    ])
     .select()
     .single();
 
@@ -42,7 +44,7 @@ export async function createJob({
 export async function getAllJobs() {
   const { data, error } = await supabase
     .from("jobs")
-    .select("*") // tạm thời lấy full cột, join sau
+    .select("*")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -69,10 +71,7 @@ export async function getAgencyJobs(agencyId) {
 
 // 4. Xoá job
 export async function deleteJob(jobId) {
-  const { error } = await supabase
-    .from("jobs")
-    .delete()
-    .eq("id", jobId);
+  const { error } = await supabase.from("jobs").delete().eq("id", jobId);
 
   if (error) {
     console.error("❌ deleteJob error:", error);
@@ -101,9 +100,9 @@ export async function updateJob(jobId, data) {
     .from("jobs")
     .update({
       ...data,
-      requirements: data.requirements || [], 
-      urgency: data.urgency || "low", 
-      featured: data.featured || false 
+      requirements: data.requirements || [],
+      urgency: data.urgency || "low",
+      featured: data.featured || false,
     })
     .eq("id", jobId)
     .select()
@@ -122,12 +121,14 @@ export async function updateJob(jobId, data) {
 export async function applyJob({ job_id, candidate_id, cover_letter }) {
   const { data, error } = await supabase
     .from("applications")
-    .insert([{ 
-      job_id, 
-      candidate_id, 
-      cover_letter, 
-      status: "pending" 
-    }])
+    .insert([
+      {
+        job_id,
+        candidate_id,
+        cover_letter,
+        status: "pending",
+      },
+    ])
     .select()
     .single();
 
@@ -142,7 +143,7 @@ export async function applyJob({ job_id, candidate_id, cover_letter }) {
 export async function getJobApplications(jobId) {
   const { data, error } = await supabase
     .from("applications")
-    .select("*") // để đơn giản, join profile sau
+    .select("*")
     .eq("job_id", jobId)
     .order("created_at", { ascending: false });
 
@@ -182,4 +183,25 @@ export async function updateApplicationStatus(applicationId, status) {
     throw error;
   }
   return data;
+}
+
+/* ================== REALTIME SUBSCRIPTION ================== */
+
+// 11. Lắng nghe thay đổi trên bảng applications (INSERT/UPDATE/DELETE)
+export function subscribeApplications(onChange) {
+  const channel = supabase
+    .channel("applications-changes")
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "applications" },
+      (payload) => {
+        console.log("🔔 Realtime update:", payload);
+        if (onChange) onChange(payload);
+      }
+    )
+    .subscribe();
+
+  return () => {
+    supabase.removeChannel(channel); // cleanup khi unmount
+  };
 }

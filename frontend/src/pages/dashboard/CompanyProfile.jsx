@@ -1,28 +1,108 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "../../lib/supabaseClient"; // ✅ import client
 
 export default function CompanyProfile() {
   const [formData, setFormData] = useState({
-    companyName: "Công ty Sự kiện ABC",
-    companyType: "Công ty tổ chức sự kiện",
-    website: "https://abc-event.vn",
-    address: "123 Đường Nguyễn Trãi, Hà Nội",
-    contactPerson: "Nguyễn Văn A",
-    phone: "0123456789",
-    email: "abc@event.vn",
+    companyName: "",
+    companyType: "",
+    website: "",
+    address: "",
+    contactPerson: "",
+    phone: "",
+    email: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [agencyId, setAgencyId] = useState(null);
 
+  // ✅ Lấy agencyId từ session Supabase
+  useEffect(() => {
+    const getAgency = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error) {
+        console.error("❌ Lỗi lấy user:", error);
+        setLoading(false);
+        return;
+      }
+      if (data?.user) {
+        setAgencyId(data.user.id);
+      }
+    };
+    getAgency();
+  }, []);
+
+  // ✅ Fetch dữ liệu từ profiles
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (!agencyId) return;
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select(
+            "company_name, company_type, company_website, company_address, contact_person, phone, email"
+          )
+          .eq("id", agencyId)
+          .single();
+
+        if (error) throw error;
+
+        setFormData({
+          companyName: data.company_name || "",
+          companyType: data.company_type || "",
+          website: data.company_website || "",
+          address: data.company_address || "",
+          contactPerson: data.contact_person || "",
+          phone: data.phone || "",
+          email: data.email || "",
+        });
+      } catch (err) {
+        console.error("❌ Lỗi fetch profile:", err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+  }, [agencyId]);
+
+  // ✅ Handle form
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
-    setIsEditing(false);
-    alert("Cập nhật hồ sơ công ty thành công!");
-    console.log("Updated company profile:", formData);
+  // ✅ Lưu về DB
+  const handleSave = async () => {
+    if (!agencyId) return;
+
+    try {
+      const { error } = await supabase
+        .from("profiles")
+        .update({
+          company_name: formData.companyName,
+          company_type: formData.companyType,
+          company_website: formData.website,
+          company_address: formData.address,
+          contact_person: formData.contactPerson,
+          phone: formData.phone,
+          email: formData.email,
+        })
+        .eq("id", agencyId);
+
+      if (error) throw error;
+
+      alert("✅ Cập nhật hồ sơ công ty thành công!");
+      setIsEditing(false);
+    } catch (err) {
+      console.error("❌ Lỗi update profile:", err.message);
+      alert("Cập nhật thất bại!");
+    }
   };
+
+  if (loading) {
+    return <p className="p-6 text-gray-500">Đang tải dữ liệu...</p>;
+  }
 
   return (
     <div className="p-6">
