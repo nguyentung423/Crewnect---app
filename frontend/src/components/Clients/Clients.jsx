@@ -5,78 +5,78 @@ import React, { useState } from 'react';
 const agencies = [
   {
     id: 1,
-    name: "Creative Agency Pro",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/ab3f20/FFFFFF?text=Creative+Pro",
-    category: "Creative & Design"
+    category: "Coming soon"
   },
   {
     id: 2,
-    name: "Digital Marketing Hub", 
+    name: "Coming soon", 
     logo: "https://via.placeholder.com/150x80/536b4e/FFFFFF?text=Digital+Hub",
-    category: "Digital Marketing"
+    category: "Coming soon"
   },
   {
     id: 3,
-    name: "Event Solutions",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/f0b33a/FFFFFF?text=Event+Sol",
-    category: "Event Management"
+    category: "Coming soon"
   },
   {
     id: 4,
-    name: "Media Dynamics",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/ab3f20/FFFFFF?text=Media+Dyn",
-    category: "Media Production"
+    category: "Coming soon"
   },
   {
     id: 5,
-    name: "Brand Strategy Co",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/536b4e/FFFFFF?text=Brand+Co", 
-    category: "Brand Strategy"
+    category: "Coming soon"
   },
   {
     id: 6,
-    name: "Visual Arts Agency",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/f0b33a/FFFFFF?text=Visual+Arts",
-    category: "Visual Arts"
+    category: "Coming soon"
   }
 ];
 
 const brands = [
   {
     id: 1,
-    name: "TechCorp Vietnam",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/ab3f20/FFFFFF?text=TechCorp",
-    industry: "Technology"
+    industry: "Coming soon"
   },
   {
     id: 2,
-    name: "Golden Finance",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/f0b33a/FFFFFF?text=Golden+Fin",
-    industry: "Finance"
+    industry: "Coming soon"
   },
   {
     id: 3,
-    name: "EcoLife Products", 
+    name: "Coming soon", 
     logo: "https://via.placeholder.com/150x80/536b4e/FFFFFF?text=EcoLife",
-    industry: "Consumer Goods"
+    industry: "Coming soon"
   },
   {
     id: 4,
-    name: "HealthFirst Pharma",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/ab3f20/FFFFFF?text=HealthFirst",
-    industry: "Healthcare"
+    industry: "Coming soon"
   },
   {
     id: 5,
-    name: "FoodMart Chain",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/f0b33a/FFFFFF?text=FoodMart",
-    industry: "Retail"
+    industry: "Coming soon"
   },
   {
     id: 6,
-    name: "AutoDrive Motors",
+    name: "Coming soon",
     logo: "https://via.placeholder.com/150x80/536b4e/FFFFFF?text=AutoDrive",
-    industry: "Automotive"
+    industry: "Coming soon"
   }
 ];
 

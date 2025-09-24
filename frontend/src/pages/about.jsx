@@ -18,9 +18,9 @@ const aboutData = {
   },
 
   realTimeStats: [
-    { number: "5,247", label: "Ca làm đã đăng", icon: Target, trend: "+12%", live: true },
-    { number: "342", label: "Agency tin dùng", icon: Users, trend: "+8%", live: true },
-    { number: "12,438", label: "Ứng viên tham gia", icon: Heart, trend: "+23%", live: true },
+    { number: "0", label: "Ca làm đã đăng", icon: Target, trend: "+12%", live: true },
+    { number: "0", label: "Agency tin dùng", icon: Users, trend: "+8%", live: true },
+    { number: "0", label: "Ứng viên tham gia", icon: Heart, trend: "+23%", live: true },
   ],
 
   achievements: [
