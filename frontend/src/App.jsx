@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
+import ScrollToTop from "./ScrollToTop";   // ✅ import thêm
 
 // Trang chính
 import Home from "./pages/Home";
 import About from "./pages/about";
-import Blog from "./pages/Blog";   // ✅ thêm Blog
+import Blog from "./pages/Blog";
 
 // Signup & Login
 import Signup from "./pages/Signup";
@@ -36,12 +37,13 @@ import CandidateSettings from "./pages/candidate/Settings";
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />    {/* ✅ thêm dòng này */}
       <Layout>
         <Routes>
           {/* Public */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />   {/* ✅ Blog mới */}
+          <Route path="/blog" element={<Blog />} />
 
           {/* Signup */}
           <Route path="/signup" element={<Signup />} />
@@ -55,7 +57,7 @@ const App = () => {
           {/* Test Supabase */}
           <Route path="/test-supabase" element={<TestSupabase />} />
 
-          {/* ✅ Agency Dashboard */}
+          {/* Agency Dashboard */}
           <Route path="/agency" element={<AgencyDashboard />}>
             <Route index element={<Overview />} />
             <Route path="jobs" element={<Jobs />} />
@@ -65,7 +67,7 @@ const App = () => {
             <Route path="settings" element={<Settings />} />
           </Route>
 
-          {/* ✅ Candidate Dashboard */}
+          {/* Candidate Dashboard */}
           <Route path="/candidate" element={<CandidateDashboard />}>
             <Route index element={<CandidateOverview />} />
             <Route path="jobs" element={<CandidateJobs />} />
